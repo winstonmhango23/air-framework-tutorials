@@ -1,0 +1,44 @@
+# Agent Instructions for Air Projects
+
+## Project Context
+
+- This is an Air web framework project (https://github.com/feldroy/air)
+- Air is a high-level layer over FastAPI that streamlines web interface and API development
+- Air emphasizes developer experience with Pythonic approaches
+
+## Code Style & Conventions
+
+- Use Ruff for linting and formatting: `ruff check .` and `ruff format .`
+- Follow the configuration in pyproject.toml
+- Run `ruff check --fix .` to automatically fix most issues
+- Use comprehensive type hints for all functions, parameters, and return values
+- Write clear, comprehensive docstrings for all functions, classes, and modules
+- Follow the AI-native design principles of Air (predictable patterns, clear naming)
+
+## Testing
+
+- Use PyTest for testing
+- Write tests that follow the patterns established in the existing test suite
+- Aim for high test coverage using `pytest --cov=.` 
+- Create test files with names starting with `test_` or ending with `_test.py`
+- Run `pytest` regularly to ensure no regressions
+
+## Type Checking
+
+- Use MyPy for type checking: `mypy .`
+- Install typing extensions as needed: `uv add --dev typing-extensions`
+- Ensure all new code passes MyPy checks before committing
+
+## Project Structure
+
+- Air projects follow predictable patterns for routing, templates, and components
+- Break up large files into meaningful modules to help with AI context limitations
+- Use Air's tag system and layout components as appropriate
+- Follow common Python web development patterns while leveraging Air's features
+
+## Development Workflow
+
+- Always run Ruff, MyPy, and PyTest before committing changes
+- Use `uv` as the package manager: `uv add`, `uv add --dev`, etc.
+- When adding new dependencies, use `uv add` for runtime and `uv add --dev` for development
+- Check your work with the tools before asking humans to review

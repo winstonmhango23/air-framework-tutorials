@@ -11,7 +11,20 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "mypy>=1.18.2",
     "pyrefly>=0.39.2",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
     "ruff>=0.14.2",
     "ty>=0.0.1a24",
+    "typing-extensions>=4.15.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
 ]
