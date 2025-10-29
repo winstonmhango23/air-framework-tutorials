@@ -8,3 +8,10 @@ dependencies = [
     "air[standard]>=0.39.0",
     "fastapi[standard]>=0.120.2",
 ]
+
+[dependency-groups]
+dev = [
+    "pyrefly>=0.39.2",
+    "ruff>=0.14.2",
+    "ty>=0.0.1a24",
+]

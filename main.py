@@ -2,6 +2,7 @@ import air
 
 app = air.Air()
 
+
 @app.page
 def index():
     title = "My Blog"  # TODO: Change this to your own blog title!
