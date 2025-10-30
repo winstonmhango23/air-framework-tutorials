@@ -2,8 +2,9 @@ from pathlib import Path
 from frontmatter import Frontmatter
 import markdown
 from datetime import datetime
+from typing import List
+import fastapi
 import air
-
 
 def get_articles() -> list[dict]:
     """Read all markdown files in the articles directory and return their content."""
@@ -22,6 +23,7 @@ def get_article(slug: str) -> dict | None:
 
 
 app = air.Air()
+api = fastapi.FastAPI()
 
 @app.page
 def index():
@@ -32,7 +34,9 @@ def index():
             air.Nav(
                 air.A("My Personal Blog", href="/", style="font-size: 1.5em; font-weight: bold;"),
                 air.Span(" | ", style="margin: 0 10px;"),
-                air.A("Contact", href="/contact")
+                air.A("Contact", href="/contact"),
+                air.Span(" | ", style="margin: 0 10px;"),
+                air.A("API", href="/api/docs", target="_blank")
             )
         ),
         air.Head(air.Title(title)),
@@ -109,7 +113,7 @@ def contact():
             ),
             air.Div(
                 air.Label("Message", for_="message"),
-                air.Textarea(name="message", required=True, rows=5),
+                air.Textarea(name="message", required=True, rows="5"),
             ),
             air.Button("Submit", type="submit"),
             method="POST",
@@ -127,9 +131,6 @@ async def contact_handler(request: air.Request):
     """Handle form submission."""
     form_data = await request.form()
 
-    # In a real application, you would process the form data here
-    # (e.g., save to database, send email, etc.)
-
     name = form_data.get("name")
     email = form_data.get("email")
     message = form_data.get("message")
@@ -144,3 +145,44 @@ async def contact_handler(request: air.Request):
             air.A("Send Another Message", href="/contact")
         )
     )
+
+# API Endpoints
+@api.get("/articles")
+def api_articles():
+    """Return all articles as JSON."""
+    articles = get_articles()
+    # Return only the attributes, not the full frontmatter object
+    return {
+        "articles": [
+            {
+                "title": article["attributes"]["title"],
+                "slug": article["attributes"]["slug"],
+                "description": article["attributes"]["description"],
+                "date": article["attributes"]["date"],
+                "author": article["attributes"]["author"],
+                "tags": article["attributes"]["tags"]
+            }
+            for article in articles
+        ]
+    }
+
+
+@api.get("/articles/{slug}")
+def api_article_detail(slug: str):
+    """Return a specific article as JSON."""
+    article = get_article(slug)
+    if not article:
+        raise fastapi.exceptions.HTTPException(status_code=404)
+
+    return {
+        "title": article["attributes"]["title"],
+        "slug": article["attributes"]["slug"],
+        "description": article["attributes"]["description"],
+        "date": article["attributes"]["date"],
+        "author": article["attributes"]["author"],
+        "tags": article["attributes"]["tags"],
+        "content": article["body"]
+    }
+
+# Mounting the API into the APP
+app.mount("/api", api)
