@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections - Luxe</title>
+  <meta name="description" content="Browse our thoughtfully organized collections. Curated collections for the discerning taste.">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="/static/images/icon-light-32x32.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/static/images/icon-dark-32x32.png" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/static/images/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/static/images/apple-icon.png">
+</head>
+<body class="font-sans antialiased min-h-screen bg-background text-foreground">
+  {% include "components/airtags/header.html" %}
+  
+  <main class="min-h-screen bg-background text-foreground pt-20">
+    {% include "components/airtags/categories.html" %}
+    {% include "components/airtags/product-showcase.html" %}
+  </main>
+
+  {% include "components/airtags/footer.html" %}
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+</html>

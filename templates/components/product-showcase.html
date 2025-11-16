@@ -1,0 +1,69 @@
+<section class="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16 gap-6">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-4">
+          <span class="text-balance">Featured Selection</span>
+        </h2>
+        <p class="text-muted-foreground">
+          Handpicked pieces for this season
+        </p>
+      </div>
+      <a href="#" class="text-primary font-medium text-sm hover:underline">
+        View All →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <!-- Product 1 -->
+      <div class="group cursor-pointer">
+        <div class="relative bg-secondary rounded-lg overflow-hidden mb-4 aspect-square">
+          <div class="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium z-10">
+            New
+          </div>
+          {{ air.Img(src="/static/images/minimalist-modern-chair-furniture.jpg", alt="Minimalist Chair", class_="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300") }}
+        </div>
+        <h3 class="font-medium text-base mb-2 group-hover:text-primary transition-colors">
+          Minimalist Chair
+        </h3>
+        <p class="text-muted-foreground text-sm">$299</p>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="group cursor-pointer">
+        <div class="relative bg-secondary rounded-lg overflow-hidden mb-4 aspect-square">
+          {{ air.Img(src="/static/images/minimalist-nordic-lamp-lighting.jpg", alt="Nordic Lamp", class_="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300") }}
+        </div>
+        <h3 class="font-medium text-base mb-2 group-hover:text-primary transition-colors">
+          Nordic Lamp
+        </h3>
+        <p class="text-muted-foreground text-sm">$189</p>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="group cursor-pointer">
+        <div class="relative bg-secondary rounded-lg overflow-hidden mb-4 aspect-square">
+          <div class="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium z-10">
+            Featured
+          </div>
+          {{ air.Img(src="/static/images/minimalist-ceramic-vase-home-decor.jpg", alt="Ceramic Vase", class_="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300") }}
+        </div>
+        <h3 class="font-medium text-base mb-2 group-hover:text-primary transition-colors">
+          Ceramic Vase
+        </h3>
+        <p class="text-muted-foreground text-sm">$159</p>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="group cursor-pointer">
+        <div class="relative bg-secondary rounded-lg overflow-hidden mb-4 aspect-square">
+          {{ air.Img(src="/static/images/minimalist-canvas-wall-art.jpg", alt="Canvas Art", class_="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300") }}
+        </div>
+        <h3 class="font-medium text-base mb-2 group-hover:text-primary transition-colors">
+          Canvas Art
+        </h3>
+        <p class="text-muted-foreground text-sm">$249</p>
+      </div>
+    </div>
+  </div>
+</section>

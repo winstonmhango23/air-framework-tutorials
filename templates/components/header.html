@@ -1,0 +1,74 @@
+<header class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+          <span class="text-primary-foreground font-bold">C</span>
+        </div>
+        <span class="font-semibold text-lg hidden sm:inline tracking-tight">Luxe</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#" class="text-sm font-medium hover:text-primary transition-colors">
+          Collections
+        </a>
+        <a href="#" class="text-sm font-medium hover:text-primary transition-colors">
+          About
+        </a>
+        <a href="#" class="text-sm font-medium hover:text-primary transition-colors">
+          Contact
+        </a>
+      </nav>
+
+      <!-- Desktop Icons -->
+      <div class="hidden md:flex items-center space-x-6">
+        <button class="p-2 hover:bg-secondary rounded-lg transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-foreground">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+        </button>
+        <button class="p-2 hover:bg-secondary rounded-lg transition-colors relative">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-foreground">
+            <path d="m7.5 4.27 9 5.15"></path>
+            <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+            <path d="m3.3 7 8.7 5 8.7-5"></path>
+            <path d="M12 22V12"></path>
+          </svg>
+          <span class="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden p-2" id="mobile-menu-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav id="mobile-menu" class="md:hidden pb-4 space-y-3 hidden">
+      <a href="#" class="block text-sm font-medium hover:text-primary transition-colors">
+        Collections
+      </a>
+      <a href="#" class="block text-sm font-medium hover:text-primary transition-colors">
+        About
+      </a>
+      <a href="#" class="block text-sm font-medium hover:text-primary transition-colors">
+        Contact
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  });
+</script>

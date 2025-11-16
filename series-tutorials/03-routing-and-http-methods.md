@@ -2,7 +2,7 @@
 
 Welcome back to our series on the Air web framework! I'm Winston Mhango, and in this third installment, we're diving deep into one of the most fundamental aspects of any web framework: **routing and HTTP methods**.
 
-In our previous posts, we've explored [the basics of Air](01-introduction-to-air-framework.md) and [mastered Air Tags](02-mastering-air-tags.md). Now it's time to understand how Air handles routing - the mechanism that directs incoming requests to the appropriate handler functions.
+In our previous posts, we've explored [the basics of Air](01-introduction-to-air-framework.md) and [mastering Air Tags](02-mastering-air-tags.md). Now it's time to understand how Air handles routing - the mechanism that directs incoming requests to the appropriate handler functions.
 
 ## Understanding Routing in Air
 
@@ -23,13 +23,15 @@ def home():
     )
 ```
 
+Under the hood, when you use `@app.get("/")`, Air creates a route mapping in its internal router that associates the path "/" with the [home](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src_examples/applications__Air__get.py#L9-L11) function. When a GET request is made to "/", Air's routing system will execute the [home](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src_examples/applications__Air__get.py#L9-L11) function and return its result to the client.
+
 ## Basic HTTP Method Routing
 
 Air supports all standard HTTP methods through corresponding decorators. Let's explore each one:
 
 ### GET Requests
 
-GET is the most common HTTP method, used for retrieving data:
+GET is the most common HTTP method, used for retrieving data. It's idempotent, meaning making the same request multiple times should have the same effect as making it once.
 
 ```python
 @app.get("/")
@@ -47,9 +49,11 @@ def about():
     )
 ```
 
+When a client makes a GET request to these endpoints, Air automatically calls the corresponding function and converts its return value to an HTTP response. If the function returns Air Tags (like [air.H1](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/tags/html.py#L247-L248) or [air.P](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/tags/html.py#L277-L277)), Air automatically wraps them in an HTML response.
+
 ### POST Requests
 
-POST is used for submitting data, typically from forms:
+POST is used for submitting data, typically from forms. Unlike GET requests, POST requests can contain a body with data.
 
 ```python
 @app.post("/contact")
@@ -67,9 +71,13 @@ async def contact_form(request: air.Request):
     )
 ```
 
+Note that this function is `async` because we're using `await request.form()`. Air supports both synchronous and asynchronous route handlers, automatically handling the execution model based on whether the function is a coroutine or not.
+
+The [air.Request](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/requests.py#L41-L141) object provides access to all aspects of the incoming HTTP request, including form data, query parameters, headers, and more.
+
 ### PUT Requests
 
-PUT is used for updating resources:
+PUT is used for updating resources. It's idempotent, meaning making the same PUT request multiple times should have the same effect as making it once.
 
 ```python
 @app.put("/api/users/{user_id}")
@@ -85,7 +93,7 @@ async def update_user(user_id: int, request: air.Request):
 
 ### DELETE Requests
 
-DELETE is used for removing resources:
+DELETE is used for removing resources. Like PUT, it's idempotent.
 
 ```python
 @app.delete("/api/users/{user_id}")
@@ -98,7 +106,7 @@ async def delete_user(user_id: int):
 
 ### PATCH Requests
 
-PATCH is used for partial updates:
+PATCH is used for partial updates to resources.
 
 ```python
 @app.patch("/api/users/{user_id}")
@@ -118,7 +126,7 @@ Air supports both path parameters and query parameters for dynamic routing.
 
 ### Path Parameters
 
-Path parameters are defined in the route path using curly braces:
+Path parameters are defined in the route path using curly braces. These are required parts of the URL path that identify specific resources.
 
 ```python
 @app.get("/users/{user_id}")
@@ -137,9 +145,13 @@ def get_post_by_date(year: int, month: int, day: int):
     )
 ```
 
+When Air processes a request to `/users/123`, it extracts "123" from the URL, converts it to an integer (because the function parameter is typed as `int`), and passes it as the [user_id](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src_examples/applications__Air__get.py#L15-L19) argument to the [get_user](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src_examples/applications__Air__get.py#L15-L19) function.
+
+Air leverages FastAPI's powerful type system for automatic parameter validation and conversion. If someone tries to access `/users/abc`, Air will automatically return a 422 error because "abc" cannot be converted to an integer.
+
 ### Query Parameters
 
-Query parameters are automatically extracted from the URL and passed as function arguments:
+Query parameters are automatically extracted from the URL and passed as function arguments. These are optional parameters that appear after the `?` in a URL.
 
 ```python
 @app.get("/search")
@@ -153,6 +165,8 @@ def search_posts(query: str, page: int = 1, limit: int = 10):
 # This would handle URLs like:
 # /search?query=python&page=2&limit=20
 ```
+
+In this example, [query](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L146-L151) is a required string parameter, while [page](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L146-L151) and [limit](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L146-L151) have default values, making them optional. Air automatically extracts these values from the query string and converts them to the specified types.
 
 ### Optional Parameters
 
@@ -193,13 +207,27 @@ def contact_info():
     return air.layouts.mvpcss(air.H1("Contact Information"))
 ```
 
-This is particularly useful for quickly prototyping web pages without having to manually specify routes.
+This is particularly useful for quickly prototyping web pages without having to manually specify routes. Under the hood, the `@app.page` decorator calls a utility function called `compute_page_path` that converts function names to URL paths:
+
+- Functions named `index` map to "/"
+- Underscores in function names are converted to hyphens
+- For example, `about_us` becomes "/about-us"
+
+You can customize this behavior by setting the `path_separator` parameter when creating your Air app:
+
+```python
+app = air.Air(path_separator="/")  # Use slashes instead of hyphens
+
+@app.page
+def about_us():  # Will route to /about/us instead of /about-us
+    return air.layouts.mvpcss(air.H1("About Us"))
+```
 
 ## Advanced Routing Features
 
 ### Route Dependencies
 
-Air supports dependencies that can be injected into route handlers:
+Air supports dependencies that can be injected into route handlers. This is particularly useful for authentication, database connections, and other cross-cutting concerns:
 
 ```python
 from fastapi import Depends
@@ -216,9 +244,11 @@ def profile(current_user: dict = Depends(get_current_user)):
     )
 ```
 
+The `Depends` function tells Air to execute [get_current_user](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L207-L209) before calling the [profile](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L211-L216) function, and passes its return value as the [current_user](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L212-L216) parameter.
+
 ### Request Validation with Pydantic
 
-You can use Pydantic models for request validation:
+You can use Pydantic models for request validation, which provides automatic validation, serialization, and documentation:
 
 ```python
 from pydantic import BaseModel
@@ -241,9 +271,17 @@ async def create_user(user: UserCreate):
     }
 ```
 
+When a POST request is made to `/api/users` with JSON data, Air automatically:
+1. Parses the JSON body
+2. Validates that it matches the [UserCreate](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L226-L230) schema
+3. Converts it to a [UserCreate](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L226-L230) instance
+4. Passes it to the [create_user](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L231-L241) function
+
+If the request data doesn't match the schema, Air automatically returns a 422 error with details about what was wrong.
+
 ### Response Models
 
-You can also specify response models for better API documentation:
+You can also specify response models for better API documentation and validation:
 
 ```python
 class UserResponse(BaseModel):
@@ -260,6 +298,8 @@ def get_user_api(user_id: int):
         "email": "alice@example.com"
     }
 ```
+
+The `response_model` parameter ensures that the response data matches the specified schema, filtering out any extra fields and ensuring required fields are present.
 
 ## Combining REST APIs with Web Pages
 
@@ -296,6 +336,8 @@ def get_user(user_id: int):
 app.mount("/api", api)
 ```
 
+This pattern allows you to have a user-facing website at the root paths (/, /about, etc.) while providing a REST API under /api that can be used by other applications or JavaScript frontend frameworks.
+
 ## Route Organization with Routers
 
 For larger applications, you can organize routes using routers:
@@ -329,6 +371,8 @@ def admin_dashboard():
 # Include with additional prefix
 app.include_router(admin_router, prefix="/admin")
 ```
+
+Routers help organize complex applications by grouping related routes together. The `prefix` parameter automatically prepends the specified path to all routes in the router, and the `tags` parameter helps organize the API documentation.
 
 ## Practical Example: Blog Application
 

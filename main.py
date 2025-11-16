@@ -90,24 +90,74 @@ def create_page_with_jinja2(request: air.Request):
     )
 
 
+def create_airtags_home(request: air.Request):
+    # Render the AirTags home template
+    return jinja(
+        request,
+        name="components/airtags/home.html",
+        context={"air": air}
+    )
+
+
+def create_airtags_collections(request: air.Request):
+    # Render the AirTags collections template
+    return jinja(
+        request,
+        name="components/airtags/collections.html",
+        context={"air": air}
+    )
+
+
+def create_airtags_about(request: air.Request):
+    # Render the AirTags about template
+    return jinja(
+        request,
+        name="components/airtags/about.html",
+        context={"air": air}
+    )
+
+
+def create_airtags_contact(request: air.Request):
+    # Render the AirTags contact template
+    return jinja(
+        request,
+        name="components/airtags/contact.html",
+        context={"air": air}
+    )
+
+
 # Initialize Air app
 app = air.Air()
 
 
+# Mount static files
+app.mount("/static", air.StaticFiles(directory="static"), name="static")
+
+
 # Routes
 @app.get("/")
-def index():
-    return air.Html(
-        air.Head(air.Title("Air Framework Blog Example")),
-        air.Body(
-            air.H1("Air Framework Blog Example"),
-            air.P("Welcome to the Air Framework blog example!"),
-            air.Ul(
-                air.Li(air.A("Air Tags Implementation", href="/blog/air-tags")),
-                air.Li(air.A("Jinja2 Implementation", href="/blog/jinja2"))
-            )
-        )
-    )
+def index(request: air.Request):
+    return create_airtags_home(request)
+
+
+@app.get("/shop")
+def shop(request: air.Request):
+    return create_airtags_home(request)
+
+
+@app.get("/collections")
+def collections(request: air.Request):
+    return create_airtags_collections(request)
+
+
+@app.get("/about")
+def about(request: air.Request):
+    return create_airtags_about(request)
+
+
+@app.get("/contact")
+def contact(request: air.Request):
+    return create_airtags_contact(request)
 
 
 @app.get("/blog/air-tags")
