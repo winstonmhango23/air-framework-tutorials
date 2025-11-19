@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout - PremiumShop{% endblock %}
+
+{% block content %}
+  {% include "partials/navigation.html" %}
+  
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav class="flex mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary">
+            <i class="fas fa-home mr-2"></i>
+            Home
+          </a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <i class="fas fa-chevron-right text-muted-foreground text-xs mx-2"></i>
+            <a href="/cart" class="ml-1 text-sm font-medium text-muted-foreground hover:text-primary md:ml-2">Cart</a>
+          </div>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <i class="fas fa-chevron-right text-muted-foreground text-xs mx-2"></i>
+            <span class="ml-1 text-sm font-medium text-foreground md:ml-2">Checkout</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    
+    <h1 class="text-3xl font-bold text-foreground mb-8">Checkout</h1>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Checkout form -->
+      <div class="lg:col-span-2">
+        <div class="bg-card border border-border rounded-2xl p-6">
+          <div class="border-b border-border pb-6">
+            <h2 class="text-xl font-bold text-foreground">Shipping Information</h2>
+          </div>
+          
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="first-name" class="block text-sm font-medium text-foreground mb-2">First Name</label>
+              <input 
+                type="text" 
+                id="first-name" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="John"
+              >
+            </div>
+            <div>
+              <label for="last-name" class="block text-sm font-medium text-foreground mb-2">Last Name</label>
+              <input 
+                type="text" 
+                id="last-name" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="Doe"
+              >
+            </div>
+            <div class="sm:col-span-2">
+              <label for="email" class="block text-sm font-medium text-foreground mb-2">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="john.doe@example.com"
+              >
+            </div>
+            <div class="sm:col-span-2">
+              <label for="address" class="block text-sm font-medium text-foreground mb-2">Street Address</label>
+              <input 
+                type="text" 
+                id="address" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="123 Main Street"
+              >
+            </div>
+            <div>
+              <label for="city" class="block text-sm font-medium text-foreground mb-2">City</label>
+              <input 
+                type="text" 
+                id="city" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="New York"
+              >
+            </div>
+            <div>
+              <label for="state" class="block text-sm font-medium text-foreground mb-2">State</label>
+              <select 
+                id="state" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground appearance-none"
+              >
+                <option value="">Select State</option>
+                <option value="NY">New York</option>
+                <option value="CA">California</option>
+                <option value="TX">Texas</option>
+                <option value="FL">Florida</option>
+              </select>
+            </div>
+            <div>
+              <label for="zip" class="block text-sm font-medium text-foreground mb-2">ZIP Code</label>
+              <input 
+                type="text" 
+                id="zip" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="10001"
+              >
+            </div>
+            <div>
+              <label for="country" class="block text-sm font-medium text-foreground mb-2">Country</label>
+              <select 
+                id="country" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground appearance-none"
+              >
+                <option value="">Select Country</option>
+                <option value="US" selected>United States</option>
+                <option value="CA">Canada</option>
+                <option value="UK">United Kingdom</option>
+                <option value="AU">Australia</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 bg-card border border-border rounded-2xl p-6">
+          <div class="border-b border-border pb-6">
+            <h2 class="text-xl font-bold text-foreground">Payment Information</h2>
+          </div>
+          
+          <div class="mt-6">
+            <div class="grid grid-cols-4 gap-4 mb-6">
+              <button class="aspect-video rounded-lg border-2 border-primary flex items-center justify-center">
+                <i class="fab fa-cc-visa text-2xl"></i>
+              </button>
+              <button class="aspect-video rounded-lg border border-border flex items-center justify-center hover:border-primary transition-colors duration-300">
+                <i class="fab fa-cc-mastercard text-2xl"></i>
+              </button>
+              <button class="aspect-video rounded-lg border border-border flex items-center justify-center hover:border-primary transition-colors duration-300">
+                <i class="fab fa-cc-amex text-2xl"></i>
+              </button>
+              <button class="aspect-video rounded-lg border border-border flex items-center justify-center hover:border-primary transition-colors duration-300">
+                <i class="fab fa-cc-paypal text-2xl"></i>
+              </button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="sm:col-span-2">
+                <label for="card-number" class="block text-sm font-medium text-foreground mb-2">Card Number</label>
+                <input 
+                  type="text" 
+                  id="card-number" 
+                  class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                  placeholder="1234 5678 9012 3456"
+                >
+              </div>
+              <div>
+                <label for="expiry" class="block text-sm font-medium text-foreground mb-2">Expiration Date</label>
+                <input 
+                  type="text" 
+                  id="expiry" 
+                  class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                  placeholder="MM/YY"
+                >
+              </div>
+              <div>
+                <label for="cvv" class="block text-sm font-medium text-foreground mb-2">CVV</label>
+                <input 
+                  type="text" 
+                  id="cvv" 
+                  class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                  placeholder="123"
+                >
+              </div>
+              <div class="sm:col-span-2">
+                <label for="card-name" class="block text-sm font-medium text-foreground mb-2">Name on Card</label>
+                <input 
+                  type="text" 
+                  id="card-name" 
+                  class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                  placeholder="John Doe"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 flex items-center">
+          <input 
+            type="checkbox" 
+            id="save-info" 
+            class="w-4 h-4 text-primary bg-background border-border rounded focus:ring-primary/50"
+          >
+          <label for="save-info" class="ml-2 text-sm text-foreground">
+            Save my information for future purchases
+          </label>
+        </div>
+      </div>
+      
+      <!-- Order summary -->
+      <div>
+        <div class="bg-card border border-border rounded-2xl p-6 sticky top-24">
+          <h2 class="text-xl font-bold text-foreground mb-6">Order Summary</h2>
+          
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-muted-foreground">Subtotal</span>
+              <span class="text-foreground">$479.97</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-muted-foreground">Shipping</span>
+              <span class="text-foreground">$9.99</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-muted-foreground">Tax</span>
+              <span class="text-foreground">$38.40</span>
+            </div>
+            <div class="flex justify-between pt-4 border-t border-border">
+              <span class="text-lg font-semibold text-foreground">Total</span>
+              <span class="text-lg font-bold text-foreground">$528.36</span>
+            </div>
+          </div>
+          
+          <button class="mt-8 w-full px-6 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors duration-300">
+            Complete Order
+          </button>
+          
+          <div class="mt-6">
+            <div class="relative">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-border"></div>
+              </div>
+              <div class="relative flex justify-center text-sm">
+                <span class="px-2 bg-card text-muted-foreground">Or</span>
+              </div>
+            </div>
+            
+            <div class="mt-6">
+              <button class="w-full px-4 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-900 transition-colors duration-300 flex items-center justify-center">
+                <i class="fab fa-apple mr-2"></i>
+                Pay with Apple Pay
+              </button>
+            </div>
+          </div>
+          
+          <div class="mt-6 pt-6 border-t border-border">
+            <div class="flex items-center">
+              <i class="fas fa-shield-alt text-primary mr-2"></i>
+              <span class="text-sm text-muted-foreground">Secure checkout powered by SSL encryption</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  {% include "partials/footer.html" %}
+{% endblock %}

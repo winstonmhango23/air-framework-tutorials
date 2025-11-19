@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - PremiumShop{% endblock %}
+
+{% block content %}
+  {% include "partials/navigation.html" %}
+  
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav class="flex mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary">
+            <i class="fas fa-home mr-2"></i>
+            Home
+          </a>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <i class="fas fa-chevron-right text-muted-foreground text-xs mx-2"></i>
+            <span class="ml-1 text-sm font-medium text-foreground md:ml-2">About Us</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    
+    <!-- Hero section -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-6">About PremiumShop</h1>
+      <p class="text-xl text-muted-foreground">
+        We're on a mission to redefine online shopping with premium quality products and exceptional customer service.
+      </p>
+    </div>
+    
+    <!-- Story section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+      <div>
+        <h2 class="text-3xl font-bold text-foreground mb-6">Our Story</h2>
+        <p class="text-muted-foreground mb-6">
+          Founded in 2020, PremiumShop began with a simple idea: to make premium quality products accessible to everyone without compromising on service or experience. What started as a small online store has grown into a trusted platform serving customers worldwide.
+        </p>
+        <p class="text-muted-foreground mb-6">
+          Our team of passionate professionals carefully curates each product in our collection, ensuring that every item meets our stringent quality standards. We believe that great products should enhance your daily life, not complicate it.
+        </p>
+        <p class="text-muted-foreground">
+          Today, we're proud to serve over 100,000 satisfied customers and counting, with a commitment to sustainability, innovation, and customer satisfaction at the heart of everything we do.
+        </p>
+      </div>
+      <div class="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl aspect-video flex items-center justify-center">
+        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 flex items-center justify-center text-muted-foreground">
+          Our Team Image
+        </div>
+      </div>
+    </div>
+    
+    <!-- Values section -->
+    <div class="mb-24">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold text-foreground mb-4">Our Core Values</h2>
+        <p class="text-muted-foreground">
+          These principles guide every decision we make and every interaction we have with our customers.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Value 1 -->
+        <div class="text-center p-8 bg-card border border-border rounded-2xl hover:border-primary/30 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-medal text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-foreground mb-4">Quality First</h3>
+          <p class="text-muted-foreground">
+            We never compromise on quality. Every product in our collection is carefully vetted to ensure it meets our high standards.
+          </p>
+        </div>
+        
+        <!-- Value 2 -->
+        <div class="text-center p-8 bg-card border border-border rounded-2xl hover:border-primary/30 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-heart text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-foreground mb-4">Customer Focus</h3>
+          <p class="text-muted-foreground">
+            Our customers are at the center of everything we do. We're committed to providing exceptional service at every touchpoint.
+          </p>
+        </div>
+        
+        <!-- Value 3 -->
+        <div class="text-center p-8 bg-card border border-border rounded-2xl hover:border-primary/30 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-leaf text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-foreground mb-4">Sustainability</h3>
+          <p class="text-muted-foreground">
+            We're committed to reducing our environmental impact through sustainable practices and eco-friendly product choices.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Team section -->
+    <div class="mb-24">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold text-foreground mb-4">Meet Our Leadership</h2>
+        <p class="text-muted-foreground">
+          The passionate team driving PremiumShop forward.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Team member 1 -->
+        <div class="text-center">
+          <div class="mx-auto mb-6 w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+            <div class="bg-gray-200 border-2 border-dashed rounded-full w-28 h-28 flex items-center justify-center text-muted-foreground">
+              JD
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-foreground">Jane Doe</h3>
+          <p class="text-primary font-medium mt-2">CEO & Founder</p>
+          <p class="text-muted-foreground mt-4">
+            Visionary leader with 15+ years in e-commerce and retail innovation.
+          </p>
+        </div>
+        
+        <!-- Team member 2 -->
+        <div class="text-center">
+          <div class="mx-auto mb-6 w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+            <div class="bg-gray-200 border-2 border-dashed rounded-full w-28 h-28 flex items-center justify-center text-muted-foreground">
+              JS
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-foreground">John Smith</h3>
+          <p class="text-primary font-medium mt-2">Chief Technology Officer</p>
+          <p class="text-muted-foreground mt-4">
+            Tech innovator focused on creating seamless shopping experiences.
+          </p>
+        </div>
+        
+        <!-- Team member 3 -->
+        <div class="text-center">
+          <div class="mx-auto mb-6 w-32 h-32 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+            <div class="bg-gray-200 border-2 border-dashed rounded-full w-28 h-28 flex items-center justify-center text-muted-foreground">
+              EC
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-foreground">Emma Chen</h3>
+          <p class="text-primary font-medium mt-2">Head of Customer Experience</p>
+          <p class="text-muted-foreground mt-4">
+            Customer advocate dedicated to exceptional service and support.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CTA section -->
+    <div class="bg-gradient-to-r from-primary to-accent rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">Join Our Community</h2>
+      <p class="text-primary-foreground/90 text-xl mb-8 max-w-2xl mx-auto">
+        Be the first to know about new arrivals, exclusive offers, and special events.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Enter your email" 
+          class="flex-1 px-5 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-foreground/50 text-foreground"
+        >
+        <button class="px-6 py-3 bg-background text-foreground font-medium rounded-lg hover:bg-background/90 transition-colors duration-300 shadow-lg whitespace-nowrap">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </main>
+  
+  {% include "partials/footer.html" %}
+{% endblock %}

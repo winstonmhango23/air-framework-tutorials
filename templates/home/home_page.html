@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}PremiumShop - Elevate Your Style{% endblock %}
+
+{% block content %}
+  {% include "partials/navigation.html" %}
+  
+  <main>
+    {% include "blocks/homepage_blocks/hero.html" %}
+    {% include "blocks/homepage_blocks/featured_categories.html" %}
+    {% include "blocks/homepage_blocks/featured_products.html" %}
+    {% include "blocks/homepage_blocks/newsletter.html" %}
+  </main>
+  
+  {% include "partials/footer.html" %}
+{% endblock %}

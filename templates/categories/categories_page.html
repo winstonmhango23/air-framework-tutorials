@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Categories - PremiumShop{% endblock %}
+
+{% block content %}
+  {% include "partials/navigation.html" %}
+  
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav class="flex mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary">
+            <i class="fas fa-home mr-2"></i>
+            Home
+          </a>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <i class="fas fa-chevron-right text-muted-foreground text-xs mx-2"></i>
+            <span class="ml-1 text-sm font-medium text-foreground md:ml-2">Categories</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    
+    <!-- Page header -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-foreground">Shop by Category</h1>
+      <p class="mt-4 text-lg text-muted-foreground">
+        Explore our carefully curated collections designed to meet your every need.
+      </p>
+    </div>
+    
+    <!-- Categories grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Category 1 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+        <div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-muted-foreground">
+            <i class="fas fa-tshirt text-2xl"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">Clothing</h3>
+            <span class="px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full">124 products</span>
+          </div>
+          <p class="mt-4 text-muted-foreground">
+            Premium apparel for every occasion, from casual wear to formal attire.
+          </p>
+          <a href="/category/clothing" class="mt-6 inline-flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
+            Shop Collection
+            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Category 2 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+        <div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-muted-foreground">
+            <i class="fas fa-mobile-alt text-2xl"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">Electronics</h3>
+            <span class="px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full">89 products</span>
+          </div>
+          <p class="mt-4 text-muted-foreground">
+            Latest tech with cutting-edge features for work and entertainment.
+          </p>
+          <a href="/category/electronics" class="mt-6 inline-flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
+            Shop Collection
+            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Category 3 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+        <div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-muted-foreground">
+            <i class="fas fa-home text-2xl"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">Home & Living</h3>
+            <span class="px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full">156 products</span>
+          </div>
+          <p class="mt-4 text-muted-foreground">
+            Elevate your living space with our premium home decor and essentials.
+          </p>
+          <a href="/category/home-living" class="mt-6 inline-flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
+            Shop Collection
+            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Category 4 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+        <div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-muted-foreground">
+            <i class="fas fa-heartbeat text-2xl"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">Health & Beauty</h3>
+            <span class="px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full">67 products</span>
+          </div>
+          <p class="mt-4 text-muted-foreground">
+            Wellness products for a better you, from skincare to fitness gear.
+          </p>
+          <a href="/category/health-beauty" class="mt-6 inline-flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
+            Shop Collection
+            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Category 5 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+        <div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-muted-foreground">
+            <i class="fas fa-gamepad text-2xl"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">Gaming</h3>
+            <span class="px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full">42 products</span>
+          </div>
+          <p class="mt-4 text-muted-foreground">
+            Level up your gaming experience with our premium accessories and gear.
+          </p>
+          <a href="/category/gaming" class="mt-6 inline-flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
+            Shop Collection
+            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Category 6 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+        <div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-muted-foreground">
+            <i class="fas fa-book text-2xl"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">Books & Media</h3>
+            <span class="px-3 py-1 bg-muted text-muted-foreground text-sm font-medium rounded-full">203 products</span>
+          </div>
+          <p class="mt-4 text-muted-foreground">
+            Expand your knowledge and entertainment with our curated selection.
+          </p>
+          <a href="/category/books-media" class="mt-6 inline-flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
+            Shop Collection
+            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  {% include "partials/footer.html" %}
+{% endblock %}

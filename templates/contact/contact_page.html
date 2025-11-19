@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - PremiumShop{% endblock %}
+
+{% block content %}
+  {% include "partials/navigation.html" %}
+  
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumb -->
+    <nav class="flex mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary">
+            <i class="fas fa-home mr-2"></i>
+            Home
+          </a>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <i class="fas fa-chevron-right text-muted-foreground text-xs mx-2"></i>
+            <span class="ml-1 text-sm font-medium text-foreground md:ml-2">Contact Us</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    
+    <!-- Page header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-6">Get in Touch</h1>
+      <p class="text-xl text-muted-foreground">
+        We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <!-- Contact information -->
+      <div class="lg:col-span-1">
+        <div class="bg-card border border-border rounded-2xl p-8 h-full">
+          <h2 class="text-2xl font-bold text-foreground mb-8">Contact Information</h2>
+          
+          <div class="space-y-8">
+            <!-- Address -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-primary"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-foreground">Our Address</h3>
+                <p class="mt-2 text-muted-foreground">
+                  123 Commerce Street<br>
+                  Suite 100<br>
+                  New York, NY 10001<br>
+                  United States
+                </p>
+              </div>
+            </div>
+            
+            <!-- Phone -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-phone-alt text-primary"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-foreground">Phone</h3>
+                <p class="mt-2 text-muted-foreground">
+                  +1 (555) 123-4567<br>
+                  Mon-Fri from 8am to 5pm
+                </p>
+              </div>
+            </div>
+            
+            <!-- Email -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-envelope text-primary"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-foreground">Email</h3>
+                <p class="mt-2 text-muted-foreground">
+                  support@premiumshop.com<br>
+                  sales@premiumshop.com
+                </p>
+              </div>
+            </div>
+            
+            <!-- Social media -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-hashtag text-primary"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-foreground">Follow Us</h3>
+                <div class="flex space-x-4 mt-4">
+                  <a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300">
+                    <i class="fab fa-facebook-f text-xl"></i>
+                  </a>
+                  <a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300">
+                    <i class="fab fa-twitter text-xl"></i>
+                  </a>
+                  <a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300">
+                    <i class="fab fa-instagram text-xl"></i>
+                  </a>
+                  <a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact form -->
+      <div class="lg:col-span-2">
+        <div class="bg-card border border-border rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-foreground mb-8">Send us a Message</h2>
+          
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="first-name" class="block text-sm font-medium text-foreground mb-2">First Name</label>
+                <input 
+                  type="text" 
+                  id="first-name" 
+                  class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                  placeholder="John"
+                >
+              </div>
+              <div>
+                <label for="last-name" class="block text-sm font-medium text-foreground mb-2">Last Name</label>
+                <input 
+                  type="text" 
+                  id="last-name" 
+                  class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                  placeholder="Doe"
+                >
+              </div>
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-foreground mb-2">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="john.doe@example.com"
+              >
+            </div>
+            
+            <div>
+              <label for="subject" class="block text-sm font-medium text-foreground mb-2">Subject</label>
+              <input 
+                type="text" 
+                id="subject" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="How can we help you?"
+              >
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-foreground mb-2">Message</label>
+              <textarea 
+                id="message" 
+                rows="6" 
+                class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground"
+                placeholder="Your message here..."
+              ></textarea>
+            </div>
+            
+            <div class="flex items-center">
+              <input 
+                type="checkbox" 
+                id="newsletter" 
+                class="w-4 h-4 text-primary bg-background border-border rounded focus:ring-primary/50"
+              >
+              <label for="newsletter" class="ml-2 text-sm text-foreground">
+                Subscribe to our newsletter
+              </label>
+            </div>
+            
+            <div>
+              <button 
+                type="submit" 
+                class="w-full px-6 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors duration-300"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ section -->
+    <div class="mt-24">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
+        <p class="text-muted-foreground">
+          Find answers to common questions about our products and services.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- FAQ 1 -->
+        <div class="bg-card border border-border rounded-2xl p-6">
+          <h3 class="text-lg font-semibold text-foreground flex items-center">
+            <i class="fas fa-question-circle text-primary mr-3"></i>
+            How long does shipping take?
+          </h3>
+          <p class="mt-4 text-muted-foreground">
+            Standard shipping typically takes 3-5 business days within the continental US. Express shipping options are available for 1-2 day delivery.
+          </p>
+        </div>
+        
+        <!-- FAQ 2 -->
+        <div class="bg-card border border-border rounded-2xl p-6">
+          <h3 class="text-lg font-semibold text-foreground flex items-center">
+            <i class="fas fa-question-circle text-primary mr-3"></i>
+            What is your return policy?
+          </h3>
+          <p class="mt-4 text-muted-foreground">
+            We offer a 30-day return policy on all products. Items must be in new, unused condition with all original packaging.
+          </p>
+        </div>
+        
+        <!-- FAQ 3 -->
+        <div class="bg-card border border-border rounded-2xl p-6">
+          <h3 class="text-lg font-semibold text-foreground flex items-center">
+            <i class="fas fa-question-circle text-primary mr-3"></i>
+            Do you offer international shipping?
+          </h3>
+          <p class="mt-4 text-muted-foreground">
+            Yes, we ship to over 50 countries worldwide. International shipping rates and delivery times vary by destination.
+          </p>
+        </div>
+        
+        <!-- FAQ 4 -->
+        <div class="bg-card border border-border rounded-2xl p-6">
+          <h3 class="text-lg font-semibold text-foreground flex items-center">
+            <i class="fas fa-question-circle text-primary mr-3"></i>
+            How can I track my order?
+          </h3>
+          <p class="mt-4 text-muted-foreground">
+            Once your order ships, you'll receive a confirmation email with tracking information. You can also track your order in your account.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  {% include "partials/footer.html" %}
+{% endblock %}
