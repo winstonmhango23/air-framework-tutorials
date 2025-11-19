@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}SecuNet - Network Security Solutions{% endblock %}
+
+{% block content %}
+  <div class="min-h-screen bg-gradient-to-b from-background to-background grid-pattern">
+    {% include "components/network-safety/header.html" %}
+    {% include "components/network-safety/hero.html" %}
+    {% include "components/network-safety/stats.html" %}
+    {% include "components/network-safety/features.html" %}
+    {% include "components/network-safety/benefits.html" %}
+    {% include "components/network-safety/testimonials.html" %}
+    {% include "components/network-safety/contact-form.html" %}
+    {% include "components/network-safety/cta.html" %}
+    {% include "components/network-safety/footer.html" %}
+  </div>
+{% endblock %}

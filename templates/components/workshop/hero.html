@@ -1,0 +1,90 @@
+<!-- Hero Section -->
+<section class="relative min-h-screen bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600 overflow-hidden">
+  <!-- Decorative floral elements -->
+  <div class="absolute top-0 left-0 opacity-30">
+    <svg class="w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 20 Q110 40 100 60 Q90 40 100 20 M100 60 Q120 70 140 60 Q120 80 100 60" stroke="white" stroke-width="2" fill="none" />
+    </svg>
+  </div>
+  <div class="absolute bottom-0 right-0 opacity-20">
+    <svg class="w-80 h-80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 100 Q70 110 90 100 Q70 120 50 100" stroke="white" stroke-width="2" fill="none" />
+    </svg>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid lg:grid-cols-2 gap-8 items-center min-h-screen">
+    <!-- Left Content -->
+    <div class="z-10 space-y-6">
+      <!-- Logo -->
+      <div class="mb-8">
+        <div class="text-white font-heading font-extrabold text-5xl md:text-6xl tracking-wider">
+          ⚡SPRINT<br />
+          <span class="text-emerald-100">FINAL</span>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight text-balance">
+        Decreed: The End of Diets!
+      </h1>
+
+      <!-- Description -->
+      <div class="space-y-4 text-white/95">
+        <p class="text-lg md:text-xl leading-relaxed">
+          Discover the formula that will help you melt fat and lose weight for good, without dieting and without suffering.
+        </p>
+        <p class="text-red-300 font-bold text-lg md:text-xl">
+          The war with the scale ends today!
+        </p>
+        <p class="text-base md:text-lg">
+          Sign up below and secure your spot<br />
+          <span class="font-bold">FOR FREE:</span>
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form class="space-y-3">
+        <input
+          type="text"
+          placeholder="Your name"
+          class="w-full px-4 py-4 text-base md:text-lg rounded-lg bg-emerald-100 text-emerald-900 placeholder-emerald-700 focus:outline-none focus:ring-2 focus:ring-white"
+        />
+        <input
+          type="email"
+          placeholder="Your email"
+          class="w-full px-4 py-4 text-base md:text-lg rounded-lg bg-emerald-100 text-emerald-900 placeholder-emerald-700 focus:outline-none focus:ring-2 focus:ring-white"
+        />
+        <input
+          type="tel"
+          placeholder="Your WhatsApp"
+          class="w-full px-4 py-4 text-base md:text-lg rounded-lg bg-emerald-100 text-emerald-900 placeholder-emerald-700 focus:outline-none focus:ring-2 focus:ring-white"
+        />
+        <button
+          type="submit"
+          class="w-full bg-red-600 hover:bg-red-700 text-white font-heading font-bold text-base md:text-lg py-4 px-6 rounded-lg transition-colors"
+        >
+          I WANT TO JOIN THE WORKSHOP
+        </button>
+      </form>
+
+      <!-- Event Details -->
+      <div class="pt-4 space-y-2 text-white/95 text-base md:text-lg">
+        <div class="flex items-start gap-3">
+          <span class="text-emerald-100 text-xl">✓</span>
+          <span>Free class - Live and No Replay</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-emerald-100 text-xl">📅</span>
+          <span>November 22nd, at 8 PM, on YouTube</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Image -->
+    <div class="relative h-96 md:h-full flex items-center justify-center">
+      <div class="relative w-full ">
+        {{ air.Img(src="/static/images/workshop/winstonjs-full-image-removebg-preview.png", alt="Fitness models", class="w-full h-full object-contain") | safe }}
+      </div>
+    </div>
+  </div>
+</section>

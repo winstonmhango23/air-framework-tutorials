@@ -86,6 +86,26 @@ def product_detail(request: air.Request, id: str):
         product_id=id
     )
 
+@app.page
+def workshop(request: air.Request):
+    """Workshop landing page route"""
+    return air.JinjaRenderer(directory="templates")(
+        request,
+        name="landingpages/workshop/workshoplanding.html",
+        title="Sprint Final - End Diets Forever",
+        air=air
+    )
+
+@app.page
+def network_safety(request: air.Request):
+    """Network safety landing page route"""
+    return air.JinjaRenderer(directory="templates")(
+        request,
+        name="landingpages/network-safety/network-safety.html",
+        title="SecuNet - Network Security Solutions",
+        air=air
+    )
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

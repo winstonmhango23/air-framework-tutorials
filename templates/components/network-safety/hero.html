@@ -1,0 +1,82 @@
+<!-- Hero Component -->
+<main class="min-h-[calc(100vh-80px)] flex items-center justify-center py-20">
+  <div class="max-w-5xl mx-auto px-4 md:px-6 lg:px-8 w-full">
+    <!-- Content Section -->
+    <div class="text-center mb-20 md:mb-32 transition-all duration-1000 opacity-100 translate-y-0">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight tracking-tight text-balance">
+        <span class="block">Ensuring Your</span>
+        <span class="block">
+          Network's <span class="bg-gradient-to-r from-accent via-accent to-accent/80 bg-clip-text text-transparent animate-pulse">Safety</span>
+        </span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+        SecuNet's advanced data encryption is a critical component of its network security solution. Protect your infrastructure with industry-leading security.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-24">
+        <button class="px-8 py-3.5 rounded-full bg-accent text-accent-foreground font-semibold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 hover:scale-105 active:scale-95">
+          Get Started
+        </button>
+        <button class="px-8 py-3.5 rounded-full border border-muted/50 bg-transparent text-foreground font-semibold hover:bg-muted/30 hover:border-muted/80 transition-all duration-300 flex items-center justify-center gap-2 group">
+          Learn more
+          <span class="text-sm group-hover:translate-x-1 transition-transform duration-300">→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Padlock Visual and Tech Elements -->
+    <div class="relative flex justify-center items-center h-72 md:h-96 mb-12 transition-all duration-1000 delay-300 opacity-100">
+      <!-- Tech Letters Background -->
+      <div class="absolute inset-0 flex items-center justify-between px-4 md:px-8">
+        <div class="text-7xl md:text-8xl lg:text-9xl font-light text-muted/15 select-none">G</div>
+        <div class="text-7xl md:text-8xl lg:text-9xl font-light text-muted/15 select-none">N</div>
+        <div class="text-7xl md:text-8xl lg:text-9xl font-light text-muted/15 select-none">M</div>
+      </div>
+
+      <!-- Decorative Line -->
+      <div class="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"></div>
+
+      <div class="relative z-10 flex justify-center">
+        <div class="glow-pulse">
+          <!-- Padlock SVG -->
+          <svg class="w-40 md:w-56 h-40 md:h-56 drop-shadow-2xl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Padlock Body -->
+            <g class="drop-shadow-lg">
+              <path d="M60 90V70C60 50 75 35 100 35C125 35 140 50 140 70V90" stroke="url(#grad1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <rect x="50" y="90" width="100" height="80" rx="8" stroke="url(#grad1)" stroke-width="2.5" fill="rgba(132, 204, 22, 0.08)" />
+              <circle cx="100" cy="125" r="5" fill="url(#grad2)" />
+              <line x1="100" y1="135" x2="100" y2="155" stroke="url(#grad2)" stroke-width="2" />
+            </g>
+
+            <!-- LED Indicators -->
+            <circle cx="75" cy="145" r="3" fill="#84cc16" opacity="0.9" />
+            <circle cx="100" cy="150" r="3" fill="#84cc16" opacity="0.7" />
+            <circle cx="125" cy="145" r="3" fill="#84cc16" opacity="0.9" />
+
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#84cc16" />
+                <stop offset="100%" stop-color="#a3e635" />
+              </linearGradient>
+              <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a3e635" />
+                <stop offset="100%" stop-color="#84cc16" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Indicator -->
+    <div class="flex justify-center">
+      <div class="text-muted-foreground/50 animate-bounce transition-opacity duration-1000 opacity-100">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</main>
