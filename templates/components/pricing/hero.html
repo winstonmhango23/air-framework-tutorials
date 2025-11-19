@@ -1,0 +1,78 @@
+<!-- Hero Section -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-transparent"></div>
+  <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgb(148 163 184 / 0.05) 1px, transparent 0); background-size: 40px 40px;"></div>
+  
+  <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+    <div class="text-center">
+      <div class="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-4 py-2 text-sm text-blue-400 border border-blue-500/20 mb-6">
+        <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+        <span>AI-Powered Report Generation</span>
+      </div>
+      
+      <h1 class="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl text-balance">
+        Instant Reports from
+        <span class="block bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
+          Any Database
+        </span>
+      </h1>
+      
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-300 leading-relaxed text-pretty">
+        Auto-Stats automatically discovers your database schema, maps your API endpoints, and generates comprehensive HR and accounting reports with zero configuration. Connect once, report forever.
+      </p>
+      
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-xl transition-colors">
+          Start Free Trial
+          <svg class="ml-2 size-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+        <button class="border border-slate-700 text-white hover:bg-slate-800 px-8 py-6 text-lg rounded-xl transition-colors">
+          Watch Demo
+        </button>
+      </div>
+      
+      <div class="mt-12 flex items-center justify-center gap-8 text-sm text-slate-400">
+        <div class="flex items-center gap-2">
+          <svg class="size-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>No code required</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="size-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>5-minute setup</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="size-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Enterprise security</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Preview -->
+    <div class="mt-20 rounded-2xl border border-slate-800/50 bg-slate-900/50 p-2 backdrop-blur-sm shadow-2xl">
+      <div class="overflow-hidden rounded-xl bg-slate-950 border border-slate-800">
+        <div class="flex items-center gap-2 border-b border-slate-800 px-4 py-3">
+          <div class="size-3 rounded-full bg-red-500"></div>
+          <div class="size-3 rounded-full bg-yellow-500"></div>
+          <div class="size-3 rounded-full bg-green-500"></div>
+        </div>
+        <div class="p-8">
+          <img 
+            src="{{ url_for('static', path='/images/pricing/modern-analytics-dashboard-with-charts-tables-dark.jpg') }}" 
+            alt="Dashboard Preview" 
+            class="w-full rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

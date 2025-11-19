@@ -106,6 +106,15 @@ def network_safety(request: air.Request):
         air=air
     )
 
+@app.page
+def pricing(request: air.Request):
+    """Pricing page route"""
+    return air.JinjaRenderer(directory="templates")(
+        request,
+        name="landingpages/pricing/pricing.html",
+        title="Auto-Stats - Pricing"
+    )
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

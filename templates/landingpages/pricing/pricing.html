@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Stats - Pricing</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/output.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/pricing.css') }}">
+  <script src="{{ url_for('static', path='/js/pricing.js') }}" defer></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+  {% include "components/pricing/navigation.html" %}
+  
+  <main>
+    {% include "components/pricing/hero.html" %}
+    {% include "components/pricing/features.html" %}
+    {% include "components/pricing/how-it-works.html" %}
+    {% include "components/pricing/stats.html" %}
+    {% include "components/pricing/database-integrations.html" %}
+    {% include "components/pricing/pricing-cards.html" %}
+    {% include "components/pricing/faq.html" %}
+    {% include "components/pricing/cta.html" %}
+  </main>
+  
+  {% include "components/pricing/footer.html" %}
+  
+</body>
+</html>

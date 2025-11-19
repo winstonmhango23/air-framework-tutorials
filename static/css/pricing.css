@@ -1,0 +1,235 @@
+/* Pricing Page Specific Styles */
+/* Color definitions based on OKLCH system from the source project */
+:root {
+  --accent: oklch(0.60 0.24 264);
+  --accent-foreground: oklch(0.95 0.01 264);
+  --muted: oklch(0.18 0.02 264);
+  --muted-foreground: oklch(0.65 0.02 264);
+  --border: oklch(0.20 0.02 264);
+  --background: oklch(0.09 0.01 264);
+  --foreground: oklch(0.95 0.01 264);
+  --card: oklch(0.12 0.01 264);
+  --card-foreground: oklch(0.95 0.01 264);
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: oklch(0.09 0.01 264);
+    --foreground: oklch(0.95 0.01 264);
+    --card: oklch(0.12 0.01 264);
+    --card-foreground: oklch(0.95 0.01 264);
+    --muted: oklch(0.18 0.02 264);
+    --muted-foreground: oklch(0.65 0.02 264);
+    --border: oklch(0.20 0.02 264);
+    --accent: oklch(0.60 0.24 264);
+    --accent-foreground: oklch(0.95 0.01 264);
+  }
+}
+
+/* Light mode variables */
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: oklch(0.98 0.002 264);
+    --foreground: oklch(0.15 0.01 264);
+    --card: oklch(0.98 0.002 264);
+    --card-foreground: oklch(0.15 0.01 264);
+    --muted: oklch(0.92 0.01 264);
+    --muted-foreground: oklch(0.50 0.02 264);
+    --border: oklch(0.88 0.01 264);
+    --accent: oklch(0.55 0.22 264);
+    --accent-foreground: oklch(0.98 0.002 264);
+  }
+}
+
+/* Border utilities */
+.border-border\/50 {
+  border-color: color-mix(in oklch, oklch(0.20 0.02 264), transparent 50%);
+}
+
+.border-border\/40 {
+  border-color: color-mix(in oklch, oklch(0.20 0.02 264), transparent 60%);
+}
+
+.border-border\/30 {
+  border-color: color-mix(in oklch, oklch(0.20 0.02 264), transparent 70%);
+}
+
+.border-border-solid {
+  border-color: oklch(0.20 0.02 264);
+}
+
+.text-border\/50 {
+  color: color-mix(in oklch, oklch(0.20 0.02 264), transparent 50%);
+}
+
+/* Background utilities */
+.bg-background\/70 {
+  background-color: color-mix(in oklch, oklch(0.09 0.01 264), transparent 30%);
+}
+
+.bg-background\/50 {
+  background-color: color-mix(in oklch, oklch(0.09 0.01 264), transparent 50%);
+}
+
+.bg-muted\/50 {
+  background-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 50%);
+}
+
+.bg-muted\/40 {
+  background-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 60%);
+}
+
+.bg-muted\/30 {
+  background-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 70%);
+}
+
+.bg-muted\/20 {
+  background-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 80%);
+}
+
+.bg-muted\/15 {
+  background-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 85%);
+}
+
+.bg-muted\/10 {
+  background-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 90%);
+}
+
+.bg-muted\/5 {
+  background-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 95%);
+}
+
+.bg-accent\/80 {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 20%);
+}
+
+.bg-accent\/50 {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 50%);
+}
+
+.bg-accent\/40 {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 60%);
+}
+
+.bg-accent\/20 {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 80%);
+}
+
+.bg-accent\/10 {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 90%);
+}
+
+/* Text utilities */
+.text-accent {
+  color: oklch(0.60 0.24 264);
+}
+
+.text-accent-foreground {
+  color: oklch(0.95 0.01 264);
+}
+
+.text-muted-foreground {
+  color: oklch(0.65 0.02 264);
+}
+
+/* Border utilities */
+.border-accent {
+  border-color: oklch(0.60 0.24 264);
+}
+
+.border-accent\/50 {
+  border-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 50%);
+}
+
+.border-accent\/40 {
+  border-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 60%);
+}
+
+.border-accent\/30 {
+  border-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 70%);
+}
+
+.border-muted\/50 {
+  border-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 50%);
+}
+
+.border-muted\/80 {
+  border-color: color-mix(in oklch, oklch(0.18 0.02 264), transparent 20%);
+}
+
+/* Shadow utilities */
+.shadow-accent\/40 {
+  box-shadow: 0 0 20px color-mix(in oklch, oklch(0.60 0.24 264), transparent 60%);
+}
+
+.shadow-accent\/20 {
+  box-shadow: 0 0 10px color-mix(in oklch, oklch(0.60 0.24 264), transparent 80%);
+}
+
+.shadow-accent\/10 {
+  box-shadow: 0 0 10px color-mix(in oklch, oklch(0.60 0.24 264), transparent 90%);
+}
+
+/* Additional hover effect classes */
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.hover\:shadow-accent\/10:hover {
+  box-shadow: 0 0 10px color-mix(in oklch, oklch(0.60 0.24 264), transparent 90%);
+}
+
+.hover\:shadow-accent\/20:hover {
+  box-shadow: 0 0 10px color-mix(in oklch, oklch(0.60 0.24 264), transparent 80%);
+}
+
+.hover\:shadow-accent\/40:hover {
+  box-shadow: 0 0 20px color-mix(in oklch, oklch(0.60 0.24 264), transparent 60%);
+}
+
+.hover\:shadow-xl:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.hover\:border-accent\/30:hover {
+  border-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 70%);
+}
+
+.hover\:border-accent\/40:hover {
+  border-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 60%);
+}
+
+.hover\:border-accent\/50:hover {
+  border-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 50%);
+}
+
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:bg-accent\/10:hover {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 90%);
+}
+
+.hover\:bg-accent\/20:hover {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 80%);
+}
+
+.hover\:bg-accent\/90:hover {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 10%);
+}
+
+.group:hover .group-hover\:bg-accent\/20 {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 80%);
+}
+
+.group:hover .group-hover\:bg-accent\/30 {
+  background-color: color-mix(in oklch, oklch(0.60 0.24 264), transparent 70%);
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
