@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./templates/**/*.{html,js}", "./static/**/*.{html,js}"],
+  content: [
+    "./templates/**/*.{html,js}", 
+    "./static/**/*.{html,js}",
+    "./*.py",
+    "./templates/**/*.py"
+  ],
   theme: {
     extend: {
       colors: {
@@ -124,5 +129,5 @@ module.exports = {
       addUtilities(newUtilities, ['responsive', 'hover'])
     }
   ],
-  darkMode: 'class',
+  darkMode: 'class'
 }
