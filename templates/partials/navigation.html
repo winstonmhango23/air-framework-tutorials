@@ -1,59 +1,74 @@
 <!-- Navigation Component -->
-<nav class="bg-card border-b border-border backdrop-blur-md bg-background/95 sticky top-0 z-50 transition-colors duration-300">
+<nav class="bg-card/80 border-b border-border backdrop-blur-xl sticky top-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex items-center justify-between h-20">
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
-        <a href="/" class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <a href="/home" class="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           PremiumShop
         </a>
       </div>
       
       <!-- Desktop Navigation -->
       <div class="hidden md:block">
-        <div class="ml-10 flex items-baseline space-x-8">
-          <a href="/" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Home</a>
-          <a href="/products" class="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium">Products</a>
-          <a href="/categories" class="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium">Categories</a>
-          <a href="/about" class="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium">About</a>
-          <a href="/contact" class="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium">Contact</a>
+        <div class="ml-10 flex items-center space-x-10">
+          <a href="/home" class="text-foreground hover:text-primary transition-colors duration-300 font-medium relative group">
+            Home
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/products" class="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group">
+            Products
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/categories" class="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group">
+            Categories
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/about" class="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group">
+            About
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/contact" class="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group">
+            Contact
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
         </div>
       </div>
       
       <!-- Right side icons -->
       <div class="flex items-center space-x-5">
         <!-- Search -->
-        <button class="text-muted-foreground hover:text-foreground transition-colors duration-200">
-          <i class="fas fa-search"></i>
+        <button class="text-muted-foreground hover:text-foreground transition-colors duration-300 p-2 rounded-full hover:bg-muted">
+          <i class="fas fa-search text-lg"></i>
         </button>
         
         <!-- Wishlist -->
-        <button class="text-muted-foreground hover:text-foreground transition-colors duration-200 relative">
-          <i class="fas fa-heart"></i>
-          <span class="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">3</span>
+        <button class="text-muted-foreground hover:text-foreground transition-colors duration-300 p-2 rounded-full hover:bg-muted relative">
+          <i class="fas fa-heart text-lg"></i>
+          <span class="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">3</span>
         </button>
         
         <!-- Cart -->
-        <button class="text-muted-foreground hover:text-foreground transition-colors duration-200 relative">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">2</span>
+        <button class="text-muted-foreground hover:text-foreground transition-colors duration-300 p-2 rounded-full hover:bg-muted relative">
+          <i class="fas fa-shopping-cart text-lg"></i>
+          <span class="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">2</span>
         </button>
         
         <!-- Dark mode toggle -->
-        <button onclick="toggleDarkMode()" class="text-muted-foreground hover:text-foreground transition-colors duration-200" aria-label="Toggle dark mode">
+        <button onclick="toggleDarkMode()" class="text-muted-foreground hover:text-foreground transition-colors duration-300 p-2 rounded-full hover:bg-muted" aria-label="Toggle dark mode">
           <i class="fas fa-moon dark:hidden"></i>
           <i class="fas fa-sun hidden dark:block"></i>
         </button>
         
         <!-- User -->
-        <button class="text-muted-foreground hover:text-foreground transition-colors duration-200">
-          <i class="fas fa-user"></i>
+        <button class="text-muted-foreground hover:text-foreground transition-colors duration-300 p-2 rounded-full hover:bg-muted">
+          <i class="fas fa-user text-lg"></i>
         </button>
       </div>
       
       <!-- Mobile menu button -->
       <div class="md:hidden flex items-center">
-        <button id="mobile-menu-button" class="text-muted-foreground hover:text-foreground transition-colors duration-200">
+        <button id="mobile-menu-button" class="text-muted-foreground hover:text-foreground transition-colors duration-300 p-2 rounded-full hover:bg-muted">
           <i class="fas fa-bars text-xl"></i>
         </button>
       </div>
@@ -62,12 +77,12 @@
   
   <!-- Mobile menu -->
   <div id="mobile-menu" class="md:hidden hidden">
-    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border-t border-border">
-      <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-foreground">Home</a>
-      <a href="/products" class="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground">Products</a>
-      <a href="/categories" class="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground">Categories</a>
-      <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground">About</a>
-      <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground">Contact</a>
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card/90 backdrop-blur-lg border-t border-border">
+      <a href="/home" class="block px-3 py-3 rounded-md text-base font-medium text-foreground hover:bg-muted">Home</a>
+      <a href="/products" class="block px-3 py-3 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted">Products</a>
+      <a href="/categories" class="block px-3 py-3 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted">Categories</a>
+      <a href="/about" class="block px-3 py-3 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted">About</a>
+      <a href="/contact" class="block px-3 py-3 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted">Contact</a>
     </div>
   </div>
 </nav>
