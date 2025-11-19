@@ -8,6 +8,8 @@ In our previous posts, we've covered [the basics of Air](01-introduction-to-air-
 
 While Air Tags provide a powerful way to generate HTML directly in Python, there are times when you might want to use traditional templates. Air provides excellent support for Jinja templates, allowing you to leverage the full power of Jinja while still benefiting from Air's other features.
 
+Under the hood, Air's template integration is built on top of FastAPI's templating system, which itself leverages Starlette's powerful templating capabilities. When you use Air's `JinjaRenderer`, you're actually working with a wrapper around FastAPI's `Jinja2Templates` class that adds special handling for Air Tags and provides a more convenient API.
+
 ## Setting Up JinjaRenderer
 
 To use Jinja templates in Air, you first need to set up a `JinjaRenderer`:
@@ -31,6 +33,8 @@ def index(request: air.Request):
 ```
 
 This setup creates a renderer that looks for templates in the `templates` directory. The `JinjaRenderer` automatically handles converting the response to HTML, making it seamless to use in your Air applications.
+
+When you instantiate `JinjaRenderer`, it internally creates a FastAPI `Jinja2Templates` instance. This means you get all the benefits of FastAPI's templating system, including automatic template compilation, caching, and efficient rendering, while also getting Air's enhanced features.
 
 ## Creating Template Directory Structure
 
@@ -102,6 +106,8 @@ And a child template that extends it:
 {% endblock %}
 ```
 
+The template inheritance system in Jinja works by allowing child templates to extend a base template and override specific blocks. When Air processes a template that extends another template, it first renders the child template, then merges it with the parent template, replacing the blocks in the parent with the content from the child. This creates a powerful system for maintaining consistent layouts across your application while allowing individual pages to customize their content.
+
 ## Context Passing to Templates
 
 Air makes it easy to pass context data to your Jinja templates. You can pass data in two ways:
@@ -142,6 +148,8 @@ def index(request: air.Request):
         context=context
     )
 ```
+
+When you pass context data to a Jinja template in Air, the framework automatically handles the merging of keyword arguments and the context dictionary. If you provide both, Air will merge them, with keyword arguments taking precedence over keys in the context dictionary if there are conflicts.
 
 ## Template Inheritance
 
@@ -203,6 +211,8 @@ One of Jinja's most powerful features is template inheritance, which allows you 
 {% endblock %}
 ```
 
+Template inheritance in Jinja works by defining named blocks in the parent template that can be overridden by child templates. When a child template extends a parent, it can define its own content for any of the named blocks. Blocks that aren't overridden in the child template will use the content from the parent template. This system allows you to create a consistent site structure while giving individual pages the flexibility to customize their content.
+
 ## Working with Template Filters and Functions
 
 Jinja provides a rich set of built-in filters and functions, and you can also create custom ones:
@@ -229,6 +239,12 @@ jinja = air.JinjaRenderer(
 jinja.env.filters['datetime'] = datetime_format
 jinja.env.globals['get_avatar'] = get_user_avatar
 ```
+
+Jinja filters are functions that can be applied to variables in templates using the pipe (`|`) syntax. They transform the value of a variable before it's rendered. For example, the built-in `upper` filter converts a string to uppercase: `{{ name|upper }}`.
+
+Jinja global functions are Python functions that are made available in all templates. They can be called like regular functions within templates. In the example above, we're adding a custom `datetime` filter and a `get_avatar` global function to our Jinja environment.
+
+The `autoescape` parameter in the Jinja environment configuration enables automatic HTML escaping, which helps prevent cross-site scripting (XSS) attacks by ensuring that any HTML special characters in variables are properly escaped before being rendered.
 
 Then use them in your templates:
 
@@ -279,6 +295,10 @@ def profile(request: air.Request, user_id: int):
 {% endblock %}
 ```
 
+When you pass Air Tags as context data to a Jinja template, Air's `JinjaRenderer` automatically converts them to their HTML string representation before passing them to Jinja. This happens through the `_jinja_context_item` function, which checks if an item is an instance of `BaseTag` and converts it to a string using its `__str__` method.
+
+Because Air Tags are converted to strings before being passed to Jinja, you need to use the `|safe` filter in your templates to prevent Jinja from escaping the HTML. This tells Jinja that the content is safe to render as HTML rather than as escaped text.
+
 ## Advanced Template Features
 
 ### Template Macros
@@ -325,6 +345,8 @@ Jinja macros are like functions in templates:
 {% endblock %}
 ```
 
+Macros in Jinja are reusable template components that can accept parameters. They work similarly to functions in programming languages, allowing you to define a piece of template code once and reuse it multiple times with different parameters. This helps reduce code duplication and makes templates more maintainable.
+
 ### Template Includes
 
 You can include other templates within your templates:
@@ -355,6 +377,8 @@ You can include other templates within your templates:
     </div>
 {% endblock %}
 ```
+
+The `{% include %}` directive in Jinja allows you to insert the content of one template into another. This is useful for including common components like headers, footers, or sidebars across multiple pages. When Jinja processes an include directive, it renders the included template and inserts the result at that point in the parent template.
 
 ## Practical Example: Blog Application with Templates
 
@@ -538,6 +562,8 @@ templates/
     └── notification.html
 ```
 
+Organizing your templates into a logical directory structure makes them easier to find and maintain. Common patterns include separating base templates, page templates, partial templates (reusable components), and email templates into different directories.
+
 ### 2. Use Template Inheritance Consistently
 
 ```html
@@ -554,6 +580,8 @@ templates/
 </html>
 ```
 
+Consistent use of template inheritance helps maintain a consistent look and feel across your application while reducing code duplication. Always define blocks in your base templates for areas that child templates are likely to customize.
+
 ### 3. Handle Errors Gracefully
 
 ```html
@@ -568,6 +596,8 @@ templates/
     <a href="/">Return to Home</a>
 {% endblock %}
 ```
+
+Always create custom error templates for common HTTP error codes like 404 (Not Found) and 500 (Internal Server Error). This provides a better user experience than the default error pages and maintains your site's branding and design.
 
 ### 4. Use Custom Filters for Common Operations
 
@@ -586,6 +616,8 @@ jinja.env.filters['truncate'] = truncate_text
 jinja.env.filters['currency'] = format_currency
 ```
 
+Custom filters can simplify your templates by encapsulating common text processing operations. This makes your templates cleaner and easier to read while promoting code reuse.
+
 ## Security Considerations
 
 ### 1. Autoescaping
@@ -597,6 +629,8 @@ Jinja automatically escapes HTML by default, which helps prevent XSS attacks:
 user_input = "<script>alert('XSS')</script>"
 # In template: {{ user_input }} renders as text, not HTML
 ```
+
+Autoescaping is a security feature that automatically converts HTML special characters (`<`, `>`, `&`, `"`, `'`) to their HTML entity equivalents. This prevents malicious users from injecting JavaScript or other HTML into your pages through form inputs or URL parameters.
 
 ### 2. Safe Filter Usage
 
@@ -610,6 +644,8 @@ return jinja(request, name="template.html", content=content)
 # In template:
 # {{ content|safe }}  # Safe because we control the Air Tags
 ```
+
+The `|safe` filter tells Jinja to skip autoescaping for a particular variable. This should only be used with content that you trust, as it can introduce security vulnerabilities if used with user-provided data.
 
 ### 3. Input Validation
 
@@ -634,6 +670,8 @@ async def add_comment(request: air.Request):
         pass
 ```
 
+Input validation is crucial for preventing security vulnerabilities and ensuring data integrity. Always validate user input using Pydantic models or similar validation libraries before processing or displaying it.
+
 ## Performance Considerations
 
 ### 1. Template Caching
@@ -650,6 +688,8 @@ jinja = air.JinjaRenderer(
     )
 )
 ```
+
+Jinja's template caching system compiles templates to Python bytecode the first time they're used and stores the compiled version for future use. This significantly improves performance for frequently accessed templates. You can adjust the cache size based on your application's needs.
 
 ### 2. Minimize Context Data
 
@@ -669,6 +709,8 @@ def user_profile(request: air.Request, user_id: int):
     return jinja(request, name="profile.html", user=user)
 ```
 
+Passing only the data that templates actually need reduces memory usage and improves performance. It also helps with security by avoiding accidental exposure of sensitive information.
+
 ## What's Coming Next
 
 In our next post, we'll explore styling with Tailwind CSS, covering:
@@ -682,6 +724,8 @@ In our next post, we'll explore styling with Tailwind CSS, covering:
 ## Conclusion
 
 Templates and Jinja integration are powerful features of the Air framework that provide flexibility in how you structure and render your web applications. By combining the traditional power of Jinja templates with Air's modern features like Air Tags, you can create sophisticated web applications with clean separation of concerns.
+
+Air's implementation of Jinja integration builds on top of FastAPI's robust templating system while adding conveniences like automatic Air Tag conversion and a more intuitive API. This allows you to leverage the full power of both templating approaches in a single application.
 
 Key takeaways from this post:
 

@@ -23,7 +23,7 @@ def home():
     )
 ```
 
-Under the hood, when you use `@app.get("/")`, Air creates a route mapping in its internal router that associates the path "/" with the [home](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src_examples/applications__Air__get.py#L9-L11) function. When a GET request is made to "/", Air's routing system will execute the [home](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src_examples/applications__Air__get.py#L9-L11) function and return its result to the client.
+Under the hood, when you use `@app.get("/")`, Air creates a route mapping in its internal router that associates the path "/" with the `home` function. When a GET request is made to "/", Air's routing system will execute the `home` function and return its result to the client.
 
 ## Basic HTTP Method Routing
 
@@ -49,7 +49,7 @@ def about():
     )
 ```
 
-When a client makes a GET request to these endpoints, Air automatically calls the corresponding function and converts its return value to an HTTP response. If the function returns Air Tags (like [air.H1](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/tags/html.py#L247-L248) or [air.P](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/tags/html.py#L277-L277)), Air automatically wraps them in an HTML response.
+When a client makes a GET request to these endpoints, Air automatically calls the corresponding function and converts its return value to an HTTP response. If the function returns Air Tags (like `air.H1` or `air.P`), Air automatically wraps them in an HTML response.
 
 ### POST Requests
 
@@ -73,7 +73,7 @@ async def contact_form(request: air.Request):
 
 Note that this function is `async` because we're using `await request.form()`. Air supports both synchronous and asynchronous route handlers, automatically handling the execution model based on whether the function is a coroutine or not.
 
-The [air.Request](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/requests.py#L41-L141) object provides access to all aspects of the incoming HTTP request, including form data, query parameters, headers, and more.
+The `air.Request` object provides access to all aspects of the incoming HTTP request, including form data, query parameters, headers, and more.
 
 ### PUT Requests
 
@@ -145,7 +145,7 @@ def get_post_by_date(year: int, month: int, day: int):
     )
 ```
 
-When Air processes a request to `/users/123`, it extracts "123" from the URL, converts it to an integer (because the function parameter is typed as `int`), and passes it as the [user_id](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src_examples/applications__Air__get.py#L15-L19) argument to the [get_user](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src_examples/applications__Air__get.py#L15-L19) function.
+When Air processes a request to `/users/123`, it extracts "123" from the URL, converts it to an integer (because the function parameter is typed as `int`), and passes it as the `user_id` argument to the `get_user` function.
 
 Air leverages FastAPI's powerful type system for automatic parameter validation and conversion. If someone tries to access `/users/abc`, Air will automatically return a 422 error because "abc" cannot be converted to an integer.
 
@@ -166,7 +166,7 @@ def search_posts(query: str, page: int = 1, limit: int = 10):
 # /search?query=python&page=2&limit=20
 ```
 
-In this example, [query](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L146-L151) is a required string parameter, while [page](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L146-L151) and [limit](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L146-L151) have default values, making them optional. Air automatically extracts these values from the query string and converts them to the specified types.
+In this example, `query` is a required string parameter, while `page` and `limit` have default values, making them optional. Air automatically extracts these values from the query string and converts them to the specified types.
 
 ### Optional Parameters
 
@@ -244,7 +244,7 @@ def profile(current_user: dict = Depends(get_current_user)):
     )
 ```
 
-The `Depends` function tells Air to execute [get_current_user](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L207-L209) before calling the [profile](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L211-L216) function, and passes its return value as the [current_user](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L212-L216) parameter.
+The `Depends` function tells Air to execute `get_current_user` before calling the `profile` function, and passes its return value as the `current_user` parameter.
 
 ### Request Validation with Pydantic
 
@@ -273,9 +273,9 @@ async def create_user(user: UserCreate):
 
 When a POST request is made to `/api/users` with JSON data, Air automatically:
 1. Parses the JSON body
-2. Validates that it matches the [UserCreate](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L226-L230) schema
-3. Converts it to a [UserCreate](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L226-L230) instance
-4. Passes it to the [create_user](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/series-tutorials/03-routing-and-http-methods.md#L231-L241) function
+2. Validates that it matches the `UserCreate` schema
+3. Converts it to a `UserCreate` instance
+4. Passes it to the `create_user` function
 
 If the request data doesn't match the schema, Air automatically returns a 422 error with details about what was wrong.
 

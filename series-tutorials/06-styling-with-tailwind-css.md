@@ -46,6 +46,13 @@ The utility-first approach means using small, single-purpose classes that do one
 </div>
 ```
 
+The utility-first approach works by providing atomic CSS classes that each handle one specific styling property. Instead of creating semantic class names like `.card` or `.button`, you compose your design by combining these utility classes directly in your HTML. This approach offers several key advantages:
+
+1. **Direct Styling**: You can see exactly what styles are applied to an element by looking at its class attribute
+2. **Rapid Prototyping**: You can build complex designs without writing any custom CSS
+3. **Consistency**: All styling comes from a predefined design system, ensuring visual consistency
+4. **No Naming Conflicts**: Since you're using predefined classes, there's no risk of naming conflicts
+
 ### Benefits of Tailwind CSS
 
 1. **Faster Development**: No context switching between HTML and CSS files
@@ -88,6 +95,14 @@ def index():
     )
 ```
 
+When using the CDN approach, Air loads Tailwind CSS directly from Tailwind's servers. This is convenient for development and prototyping because it requires no build step. However, it's not recommended for production because:
+
+1. It loads the entire Tailwind CSS library, including unused classes
+2. It depends on an external server
+3. It doesn't allow for customization of the design system
+
+Under the hood, the CDN version of Tailwind uses a Just-In-Time (JIT) compiler that processes your HTML and generates only the CSS needed for your specific classes. This happens in the browser, which is why it's convenient but not optimal for production.
+
 ### 2. Local Tailwind Installation
 
 For production applications, it's better to install Tailwind locally. Here's how:
@@ -111,6 +126,8 @@ module.exports = {
 }
 ```
 
+The `content` property tells Tailwind which files to scan for class names. During the build process, Tailwind will analyze these files and generate CSS only for the classes that are actually used, significantly reducing the final CSS file size.
+
 3. Create your CSS file (`static/css/input.css`):
 ```css
 @tailwind base;
@@ -118,10 +135,17 @@ module.exports = {
 @tailwind utilities;
 ```
 
+These directives tell Tailwind to inject its base styles, component classes, and utility classes respectively:
+- `@tailwind base` - Includes normalize.css and some base styles
+- `@tailwind components` - For component classes you define with `@apply`
+- `@tailwind utilities` - All of Tailwind's utility classes
+
 4. Build your CSS:
 ```bash
 npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch
 ```
+
+The `--watch` flag tells Tailwind to watch your files for changes and rebuild the CSS automatically during development.
 
 5. Include the generated CSS in your templates:
 ```html
@@ -144,7 +168,7 @@ npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch
 
 When using Air Tags, you can apply Tailwind classes directly:
 
-``python
+```python
 @app.page
 def dashboard():
     return air.layouts.mvpcss(
@@ -174,13 +198,15 @@ def dashboard():
     )
 ```
 
+In Air, Tailwind classes are applied using the `class_` parameter, which corresponds to the HTML `class` attribute. The underscore is necessary because `class` is a reserved keyword in Python.
+
 ## Tailwind with Air Tags
 
 One of the strengths of Air is how well it works with Tailwind CSS. Let's explore different ways to apply Tailwind classes to Air Tags.
 
 ### Applying Classes to Air Tags
 
-``python
+```python
 # Basic styling
 header = air.Header(
     air.H1("My Application", class_="text-2xl font-bold text-gray-800"),
@@ -223,11 +249,13 @@ main_content = air.Main(
 )
 ```
 
+The `class_` parameter in Air Tags accepts a string of CSS classes separated by spaces, just like the HTML `class` attribute. This allows you to apply multiple Tailwind classes to a single element.
+
 ### Dynamic Class Assignment
 
 You can dynamically assign classes based on conditions:
 
-``python
+```python
 def get_status_badge(status):
     status_classes = {
         "active": "bg-green-100 text-green-800",
@@ -262,11 +290,13 @@ def user_list():
     )
 ```
 
+This approach leverages Python's f-string formatting to dynamically construct class strings. The function returns different color classes based on the user's status, creating a visual indicator system.
+
 ### Conditional Styling
 
 You can also apply conditional styling based on data:
 
-``python
+```python
 def get_priority_class(priority):
     if priority >= 8:
         return "bg-red-100 border-red-500 text-red-700"
@@ -305,7 +335,7 @@ def task_list():
 
 Tailwind makes responsive design straightforward with its breakpoint prefixes:
 
-``python
+```python
 @app.page
 def responsive_dashboard():
     return air.layouts.mvpcss(
@@ -343,13 +373,22 @@ def responsive_dashboard():
     )
 ```
 
+Tailwind's responsive system uses mobile-first breakpoints:
+- `sm:` - 640px and up
+- `md:` - 768px and up
+- `lg:` - 1024px and up
+- `xl:` - 1280px and up
+- `2xl:` - 1536px and up
+
+Classes without a prefix apply to all screen sizes, while classes with prefixes only apply at that breakpoint and above.
+
 ## Advanced Tailwind Techniques
 
 ### Component Classes with @apply
 
 You can create reusable component classes using Tailwind's `@apply` directive:
 
-``css
+```css
 /* static/css/input.css */
 @tailwind base;
 @tailwind components;
@@ -378,9 +417,11 @@ You can create reusable component classes using Tailwind's `@apply` directive:
 }
 ```
 
+The `@layer` directive tells Tailwind where to place the generated CSS in the final output. The `components` layer is for author-defined classes that use `@apply` to compose utility classes.
+
 Then use these classes in your Air Tags:
 
-``python
+```python
 @app.page
 def component_example():
     return air.layouts.mvpcss(
@@ -404,7 +445,7 @@ def component_example():
 
 You can customize Tailwind's default theme in your `tailwind.config.js`:
 
-``javascript
+```javascript
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./templates/**/*.{html,js}", "./static/**/*.{html,js}"],
@@ -430,9 +471,11 @@ module.exports = {
 }
 ```
 
+The `extend` property allows you to add new values to the existing theme without overriding the defaults. This is useful for adding brand colors, custom fonts, or additional spacing values.
+
 Then use your custom colors and spacing:
 
-``python
+```python
 @app.page
 def branded_page():
     return air.layouts.mvpcss(
@@ -464,6 +507,8 @@ module.exports = {
 }
 ```
 
+The `darkMode: 'class'` setting means dark mode will be enabled when the `dark` class is added to the `<html>` element. The `'media'` option uses the system's preference.
+
 ```python
 @app.page
 def dark_mode_example():
@@ -484,13 +529,15 @@ def dark_mode_example():
     )
 ```
 
+Dark mode variants in Tailwind are prefixed with `dark:`. These classes only apply when the `dark` class is present on an ancestor element (typically the `<html>` element).
+
 ## Tailwind UI Components
 
 Let's create some reusable UI components with Tailwind CSS:
 
 ### Card Layouts
 
-``python
+```python
 def create_card(title, content, actions=None):
     card_header = air.Div(
         air.H3(title, class_="text-lg font-medium text-gray-900"),
@@ -528,9 +575,11 @@ def card_example():
     )
 ```
 
+This card component demonstrates how to create reusable UI components in Air. The function accepts parameters for the card's content and returns a properly styled Air Tag structure.
+
 ### Navigation Menus
 
-``python
+```python
 def create_nav_menu(items, current_path="/"):
     nav_items = air.Ul(
         *[air.Li(
@@ -633,7 +682,7 @@ def styled_form():
 
 ### 1. Use Meaningful Class Names
 
-``python
+```python
 # Good - Classes describe visual appearance
 button = air.Button(
     "Submit",
@@ -649,7 +698,7 @@ button = air.Button(
 
 ### 2. Extract Repeated Patterns
 
-``python
+```python
 # Create utility functions for common patterns
 def btn_primary():
     return "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -688,7 +737,7 @@ module.exports = {
 
 ### 4. Use Responsive Prefixes Consistently
 
-``python
+```python
 # Good - Consistent responsive design
 layout = air.Div(
     sidebar,
