@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BEST_TAILWIND_SETUP_GUIDE_FOR_AIR.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/R%3A%5C2.Travail%5C1.Enseignement%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css"><link rel="stylesheet" href="file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/D%3A%5Crdaros%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="complete-guide-to-setting-up-tailwind-css-with-the-air-framework">Complete Guide to Setting Up Tailwind CSS with the Air Framework</h1>
+<p>This guide provides a comprehensive walkthrough of setting up Tailwind CSS with the Air web framework, following the best practices and configuration used in this project.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#complete-guide-to-setting-up-tailwind-css-with-the-air-framework">Complete Guide to Setting Up Tailwind CSS with the Air Framework</a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#project-overview">Project Overview</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration-files">Configuration Files</a>
+<ul>
+<li><a href="#tailwindconfigjs">tailwind.config.js</a></li>
+<li><a href="#packagejson">package.json</a></li>
+<li><a href="#inputcss">input.css</a></li>
+</ul>
+</li>
+<li><a href="#css-variable-theme-system">CSS Variable Theme System</a></li>
+<li><a href="#building-css">Building CSS</a></li>
+<li><a href="#integrating-with-air-framework">Integrating with Air Framework</a></li>
+<li><a href="#using-tailwind-classes-in-templates">Using Tailwind Classes in Templates</a></li>
+<li><a href="#dark-mode-support">Dark Mode Support</a></li>
+<li><a href="#best-practices">Best Practices</a>
+<ul>
+<li><a href="#1-optimize-css-output">1. Optimize CSS Output</a></li>
+<li><a href="#2-use-semantic-class-names">2. Use Semantic Class Names</a></li>
+<li><a href="#3-leverage-css-variables">3. Leverage CSS Variables</a></li>
+<li><a href="#4-component-extraction">4. Component Extraction</a></li>
+<li><a href="#5-responsive-design">5. Responsive Design</a></li>
+<li><a href="#6-performance-considerations">6. Performance Considerations</a></li>
+<li><a href="#7-maintainability">7. Maintainability</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="project-overview">Project Overview</h2>
+<p>This project demonstrates a professional setup of Tailwind CSS with the Air framework, featuring:</p>
+<ul>
+<li>A custom CSS variable-based theme system for consistent design</li>
+<li>Dark mode support with automatic OS preference detection</li>
+<li>Responsive design utilities</li>
+<li>Optimized CSS output with PurgeCSS</li>
+<li>Integration with Jinja2 templates</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before setting up Tailwind CSS with Air, ensure you have:</p>
+<ul>
+<li>Node.js (version 12 or higher)</li>
+<li>npm or yarn package manager</li>
+<li>Python 3.7+ with the Air framework installed</li>
+</ul>
+<h2 id="directory-structure">Directory Structure</h2>
+<p>The recommended directory structure for an Air project with Tailwind CSS:</p>
+<pre class="hljs"><code><div>my-air-app/
+├── main.py                 # Air application entry point
+├── package.json            # Node.js dependencies and scripts
+├── tailwind.config.js      # Tailwind CSS configuration
+├── static/                 # Static assets directory
+│   ├── css/
+│   │   ├── input.css       # Tailwind directives and custom CSS
+│   │   └── output.css      # Generated CSS (do not edit)
+│   ├── js/
+│   └── images/
+├── templates/              # Jinja2 templates
+│   ├── base.html
+│   └── ...                 # Other template files
+└── components/             # Optional: Reusable components
+</div></code></pre>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>
+<p>Initialize your project with npm:</p>
+<pre class="hljs"><code><div>npm init -y
+</div></code></pre>
+</li>
+<li>
+<p>Install Tailwind CSS and its dependencies:</p>
+<pre class="hljs"><code><div>npm install -D tailwindcss
+</div></code></pre>
+</li>
+<li>
+<p>Initialize Tailwind CSS:</p>
+<pre class="hljs"><code><div>npx tailwindcss init
+</div></code></pre>
+</li>
+</ol>
+<h2 id="configuration-files">Configuration Files</h2>
+<h3 id="tailwindconfigjs">tailwind.config.js</h3>
+<p>The Tailwind configuration file defines content sources, theme extensions, and plugins:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/** <span class="hljs-doctag">@type <span class="hljs-type">{import('tailwindcss').Config}</span> </span>*/</span>
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">content</span>: [
+    <span class="hljs-string">"./templates/**/*.{html,js}"</span>, 
+    <span class="hljs-string">"./static/**/*.{html,js}"</span>,
+    <span class="hljs-string">"./*.py"</span>,
+    <span class="hljs-string">"./templates/**/*.py"</span>
+  ],
+  <span class="hljs-attr">theme</span>: {
+    <span class="hljs-attr">extend</span>: {
+      <span class="hljs-attr">colors</span>: {
+        <span class="hljs-attr">background</span>: <span class="hljs-string">'var(--background)'</span>,
+        <span class="hljs-attr">foreground</span>: <span class="hljs-string">'var(--foreground)'</span>,
+        <span class="hljs-attr">card</span>: <span class="hljs-string">'var(--card)'</span>,
+        <span class="hljs-string">'card-foreground'</span>: <span class="hljs-string">'var(--card-foreground)'</span>,
+        <span class="hljs-attr">popover</span>: <span class="hljs-string">'var(--popover)'</span>,
+        <span class="hljs-string">'popover-foreground'</span>: <span class="hljs-string">'var(--popover-foreground)'</span>,
+        <span class="hljs-attr">primary</span>: <span class="hljs-string">'var(--primary)'</span>,
+        <span class="hljs-string">'primary-foreground'</span>: <span class="hljs-string">'var(--primary-foreground)'</span>,
+        <span class="hljs-attr">secondary</span>: <span class="hljs-string">'var(--secondary)'</span>,
+        <span class="hljs-string">'secondary-foreground'</span>: <span class="hljs-string">'var(--secondary-foreground)'</span>,
+        <span class="hljs-attr">muted</span>: <span class="hljs-string">'var(--muted)'</span>,
+        <span class="hljs-string">'muted-foreground'</span>: <span class="hljs-string">'var(--muted-foreground)'</span>,
+        <span class="hljs-attr">accent</span>: <span class="hljs-string">'var(--accent)'</span>,
+        <span class="hljs-string">'accent-foreground'</span>: <span class="hljs-string">'var(--accent-foreground)'</span>,
+        <span class="hljs-attr">destructive</span>: <span class="hljs-string">'var(--destructive)'</span>,
+        <span class="hljs-string">'destructive-foreground'</span>: <span class="hljs-string">'var(--destructive-foreground)'</span>,
+        <span class="hljs-attr">border</span>: <span class="hljs-string">'var(--border)'</span>,
+        <span class="hljs-attr">input</span>: <span class="hljs-string">'var(--input)'</span>,
+        <span class="hljs-attr">ring</span>: <span class="hljs-string">'var(--ring)'</span>,
+        <span class="hljs-string">'chart-1'</span>: <span class="hljs-string">'var(--chart-1)'</span>,
+        <span class="hljs-string">'chart-2'</span>: <span class="hljs-string">'var(--chart-2)'</span>,
+        <span class="hljs-string">'chart-3'</span>: <span class="hljs-string">'var(--chart-3)'</span>,
+        <span class="hljs-string">'chart-4'</span>: <span class="hljs-string">'var(--chart-4)'</span>,
+        <span class="hljs-string">'chart-5'</span>: <span class="hljs-string">'var(--chart-5)'</span>,
+        <span class="hljs-attr">sidebar</span>: <span class="hljs-string">'var(--sidebar)'</span>,
+        <span class="hljs-string">'sidebar-foreground'</span>: <span class="hljs-string">'var(--sidebar-foreground)'</span>,
+        <span class="hljs-string">'sidebar-primary'</span>: <span class="hljs-string">'var(--sidebar-primary)'</span>,
+        <span class="hljs-string">'sidebar-primary-foreground'</span>: <span class="hljs-string">'var(--sidebar-primary-foreground)'</span>,
+        <span class="hljs-string">'sidebar-accent'</span>: <span class="hljs-string">'var(--sidebar-accent)'</span>,
+        <span class="hljs-string">'sidebar-accent-foreground'</span>: <span class="hljs-string">'var(--sidebar-accent-foreground)'</span>,
+        <span class="hljs-string">'sidebar-border'</span>: <span class="hljs-string">'var(--sidebar-border)'</span>,
+        <span class="hljs-string">'sidebar-ring'</span>: <span class="hljs-string">'var(--sidebar-ring)'</span>,
+      },
+      <span class="hljs-attr">borderRadius</span>: {
+        <span class="hljs-attr">DEFAULT</span>: <span class="hljs-string">'var(--radius)'</span>,
+      }
+    },
+  },
+  <span class="hljs-attr">plugins</span>: [
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">{ addUtilities }</span>) </span>{
+      <span class="hljs-keyword">const</span> newUtilities = {
+        <span class="hljs-string">'.bg-background'</span>: {
+          <span class="hljs-string">'background-color'</span>: <span class="hljs-string">'var(--background)'</span>,
+        },
+        <span class="hljs-string">'.text-foreground'</span>: {
+          <span class="hljs-string">'color'</span>: <span class="hljs-string">'var(--foreground)'</span>,
+        },
+        <span class="hljs-comment">// ... additional utility classes for all CSS variables</span>
+      }
+      addUtilities(newUtilities, [<span class="hljs-string">'responsive'</span>, <span class="hljs-string">'hover'</span>])
+    }
+  ],
+  <span class="hljs-attr">darkMode</span>: <span class="hljs-string">'class'</span>
+}
+</div></code></pre>
+<h3 id="packagejson">package.json</h3>
+<p>Define build scripts for Tailwind CSS:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"helloair"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A professional, modular e-commerce website built with the Air framework and Tailwind CSS."</span>,
+  <span class="hljs-attr">"scripts"</span>: {
+    <span class="hljs-attr">"build"</span>: <span class="hljs-string">"npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css"</span>,
+    <span class="hljs-attr">"watch"</span>: <span class="hljs-string">"npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch"</span>
+  },
+  <span class="hljs-attr">"devDependencies"</span>: {
+    <span class="hljs-attr">"tailwindcss"</span>: <span class="hljs-string">"^3.4.18"</span>
+  }
+}
+</div></code></pre>
+<h3 id="inputcss">input.css</h3>
+<p>Create <code>static/css/input.css</code> with Tailwind directives and custom utilities:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">@tailwind</span> base;
+<span class="hljs-keyword">@tailwind</span> components;
+<span class="hljs-keyword">@tailwind</span> utilities;
+
+<span class="hljs-comment">/* Custom color utilities for our theme */</span>
+<span class="hljs-selector-class">.bg-background</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--background);
+}
+
+<span class="hljs-selector-class">.text-foreground</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--foreground);
+}
+
+<span class="hljs-comment">/* ... additional custom utilities for all CSS variables */</span>
+</div></code></pre>
+<h2 id="css-variable-theme-system">CSS Variable Theme System</h2>
+<p>The project uses CSS variables for theming, defined in <code>static/css/style.css</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-pseudo">:root</span> {
+  <span class="hljs-comment">/* Minimalist light theme */</span>
+  <span class="hljs-attribute">--background</span>: <span class="hljs-number">#fafafa</span>;
+  <span class="hljs-attribute">--foreground</span>: <span class="hljs-number">#262626</span>;
+  <span class="hljs-attribute">--card</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">--card-foreground</span>: <span class="hljs-number">#262626</span>;
+  <span class="hljs-attribute">--primary</span>: <span class="hljs-number">#404040</span>;
+  <span class="hljs-comment">/* ... other variables */</span>
+}
+
+<span class="hljs-selector-class">.dark</span> {
+  <span class="hljs-attribute">--background</span>: <span class="hljs-number">#1f1f1f</span>;
+  <span class="hljs-attribute">--foreground</span>: <span class="hljs-number">#f2f2f2</span>;
+  <span class="hljs-attribute">--card</span>: <span class="hljs-number">#262626</span>;
+  <span class="hljs-attribute">--card-foreground</span>: <span class="hljs-number">#f2f2f2</span>;
+  <span class="hljs-attribute">--primary</span>: <span class="hljs-number">#f2f2f2</span>;
+  <span class="hljs-comment">/* ... other variables */</span>
+}
+</div></code></pre>
+<p>This approach provides:</p>
+<ul>
+<li>Consistent color usage across the application</li>
+<li>Easy theme customization</li>
+<li>Seamless dark mode support</li>
+<li>Design system adherence</li>
+</ul>
+<h2 id="building-css">Building CSS</h2>
+<p>Use the npm scripts defined in package.json to build your CSS:</p>
+<ol>
+<li>
+<p>One-time build:</p>
+<pre class="hljs"><code><div>npm run build
+</div></code></pre>
+</li>
+<li>
+<p>Watch mode for development:</p>
+<pre class="hljs"><code><div>npm run watch
+</div></code></pre>
+</li>
+</ol>
+<p>The build process will:</p>
+<ul>
+<li>Process all Tailwind directives</li>
+<li>Generate utility classes based on actual usage in your templates</li>
+<li>Purge unused CSS for optimal file size</li>
+<li>Output the final CSS to <code>static/css/output.css</code></li>
+</ul>
+<h2 id="integrating-with-air-framework">Integrating with Air Framework</h2>
+<p>In your <code>main.py</code>, mount the static files directory and reference the compiled CSS:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> air
+
+app = air.Air()
+
+<span class="hljs-comment"># Serve static files</span>
+app.mount(<span class="hljs-string">"/static"</span>, air.StaticFiles(directory=<span class="hljs-string">"static"</span>), name=<span class="hljs-string">"static"</span>)
+
+<span class="hljs-meta">@app.page</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">home</span><span class="hljs-params">(request: air.Request)</span>:</span>
+    <span class="hljs-string">"""Main homepage route that renders the homepage template"""</span>
+    <span class="hljs-keyword">return</span> air.JinjaRenderer(directory=<span class="hljs-string">"templates"</span>)(
+        request,
+        name=<span class="hljs-string">"home/home_page.html"</span>,
+        title=<span class="hljs-string">"PremiumShop - Elevate Your Style"</span>
+    )
+</div></code></pre>
+<p>In your base template (<code>templates/base.html</code>):</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"scroll-smooth"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{% block title %}PremiumShop - Elevate Your Style{% endblock %}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!-- Tailwind CSS --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/static/css/style.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/static/css/output.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+    
+    {% block extra_head %}{% endblock %}
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-background text-foreground font-sans antialiased transition-colors duration-300"</span>&gt;</span>
+    {% block content %}{% endblock %}
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<h2 id="using-tailwind-classes-in-templates">Using Tailwind Classes in Templates</h2>
+<p>Apply Tailwind classes directly in your HTML templates:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"max-w-7xl mx-auto px-4 py-12"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-3xl font-bold text-foreground mb-6"</span>&gt;</span>Welcome to Our Store<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-lg text-muted-foreground mb-8"</span>&gt;</span>Discover our premium collection<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"grid grid-cols-1 md:grid-cols-3 gap-6"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-card rounded-lg p-6 shadow-md"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-xl font-semibold text-card-foreground mb-3"</span>&gt;</span>Product 1<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-muted-foreground"</span>&gt;</span>Description of product 1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- More product cards --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<p>When using Air Tags in Python:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> air
+
+<span class="hljs-meta">@app.page</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dashboard</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> air.layouts.mvpcss(
+        air.Div(
+            air.H1(<span class="hljs-string">"Dashboard"</span>, class_=<span class="hljs-string">"text-3xl font-bold text-foreground mb-6"</span>),
+            air.Div(
+                air.P(<span class="hljs-string">"Statistics"</span>, class_=<span class="hljs-string">"text-lg text-muted-foreground"</span>),
+                class_=<span class="hljs-string">"bg-card rounded-lg p-6"</span>
+            ),
+            class_=<span class="hljs-string">"max-w-7xl mx-auto px-4 py-12"</span>
+        )
+    )
+</div></code></pre>
+<p>Note: Use <code>class_</code> (with underscore) in Python instead of <code>class</code> due to Python keyword restrictions.</p>
+<h2 id="dark-mode-support">Dark Mode Support</h2>
+<p>The project includes comprehensive dark mode support:</p>
+<ol>
+<li>CSS variables for both light and dark themes</li>
+<li>JavaScript for theme switching and persistence:</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-comment">// Check for saved theme preference or respect OS preference</span>
+    <span class="hljs-keyword">if</span> (localStorage.getItem(<span class="hljs-string">'theme'</span>) === <span class="hljs-string">'dark'</span> || 
+        (!(<span class="hljs-string">'theme'</span> <span class="hljs-keyword">in</span> localStorage) &amp;&amp; <span class="hljs-built_in">window</span>.matchMedia(<span class="hljs-string">'(prefers-color-scheme: dark)'</span>).matches)) {
+        <span class="hljs-built_in">document</span>.documentElement.classList.add(<span class="hljs-string">'dark'</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">document</span>.documentElement.classList.remove(<span class="hljs-string">'dark'</span>);
+    }
+    
+    <span class="hljs-comment">// Function to toggle dark mode</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toggleDarkMode</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.documentElement.classList.contains(<span class="hljs-string">'dark'</span>)) {
+            <span class="hljs-built_in">document</span>.documentElement.classList.remove(<span class="hljs-string">'dark'</span>);
+            localStorage.setItem(<span class="hljs-string">'theme'</span>, <span class="hljs-string">'light'</span>);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">document</span>.documentElement.classList.add(<span class="hljs-string">'dark'</span>);
+            localStorage.setItem(<span class="hljs-string">'theme'</span>, <span class="hljs-string">'dark'</span>);
+        }
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</div></code></pre>
+<ol start="3">
+<li>Tailwind configuration with <code>darkMode: 'class'</code></li>
+<li>Utility classes that respect the dark mode context</li>
+</ol>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-optimize-css-output">1. Optimize CSS Output</h3>
+<p>Ensure your <code>tailwind.config.js</code> content property correctly specifies all source files to enable proper purging of unused CSS:</p>
+<pre class="hljs"><code><div>content: [
+  <span class="hljs-string">"./templates/**/*.{html,js}"</span>, 
+  <span class="hljs-string">"./static/**/*.{html,js}"</span>,
+  <span class="hljs-string">"./*.py"</span>,
+  <span class="hljs-string">"./templates/**/*.py"</span>
+]
+</div></code></pre>
+<h3 id="2-use-semantic-class-names">2. Use Semantic Class Names</h3>
+<p>While Tailwind encourages utility-first CSS, maintain semantic meaning in your HTML structure:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">&lt;!-- Good --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"product-card bg-card rounded-lg shadow-md"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"product-title text-xl font-semibold text-card-foreground"</span>&gt;</span>Product Name<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Avoid --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bg-white rounded-lg shadow-md"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-xl font-semibold text-gray-900"</span>&gt;</span>Product Name<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<h3 id="3-leverage-css-variables">3. Leverage CSS Variables</h3>
+<p>Use CSS variables for consistent theming:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/* Define in style.css */</span>
+<span class="hljs-selector-pseudo">:root</span> {
+  <span class="hljs-attribute">--primary</span>: <span class="hljs-number">#404040</span>;
+}
+
+<span class="hljs-selector-class">.dark</span> {
+  <span class="hljs-attribute">--primary</span>: <span class="hljs-number">#f2f2f2</span>;
+}
+
+<span class="hljs-comment">/* Use in Tailwind config */</span>
+<span class="hljs-selector-tag">primary</span>: '<span class="hljs-selector-tag">var</span>(<span class="hljs-selector-tag">--primary</span>)',
+</div></code></pre>
+<h3 id="4-component-extraction">4. Component Extraction</h3>
+<p>For repeated patterns, extract components using <code>@apply</code> in your CSS:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">@layer</span> components {
+  <span class="hljs-selector-class">.btn-primary</span> {
+    @apply bg-primary text-primary-foreground font-medium py-2 px-4 rounded-lg <span class="hljs-attribute">hover</span>:opacity-<span class="hljs-number">90</span> transition-opacity;
+  }
+  
+  <span class="hljs-selector-class">.card</span> {
+    @apply bg-card rounded-lg shadow-md overflow-hidden;
+  }
+}
+</div></code></pre>
+<h3 id="5-responsive-design">5. Responsive Design</h3>
+<p>Use Tailwind's responsive prefixes consistently:</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Content that adapts to screen size --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<h3 id="6-performance-considerations">6. Performance Considerations</h3>
+<ul>
+<li>Always use the build process to purge unused CSS</li>
+<li>Minimize custom CSS in favor of Tailwind utilities</li>
+<li>Use <code>transition-colors</code> for smooth theme switching</li>
+<li>Leverage browser caching for static assets</li>
+</ul>
+<h3 id="7-maintainability">7. Maintainability</h3>
+<ul>
+<li>Keep your <code>tailwind.config.js</code> organized</li>
+<li>Document custom color names and their purposes</li>
+<li>Use consistent naming conventions for custom utilities</li>
+<li>Regularly update dependencies</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>This setup provides a robust foundation for building modern web applications with the Air framework and Tailwind CSS. The combination offers:</p>
+<ul>
+<li>Rapid development with utility-first CSS</li>
+<li>Consistent design through a CSS variable-based theme system</li>
+<li>Dark mode support with user preference persistence</li>
+<li>Optimized production builds</li>
+<li>Seamless integration with Air's Python-based templating</li>
+</ul>
+<p>By following this guide, you'll have a professional, maintainable setup that scales well for both small projects and large applications.</p>
+
+</body>
+
+</html>

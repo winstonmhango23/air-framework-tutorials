@@ -25,6 +25,30 @@ Before diving into the technical details, it's important to understand the motiv
 - Built-in support for modern web development patterns like HTMX
 - Streamlined form handling and validation with Pydantic
 
+## Core Architecture and Design Philosophy
+
+Air's architecture is built on a foundation of four key layers:
+
+1. **Foundation Layer**: FastAPI, Starlette, and Pydantic provide the core functionality
+2. **Rendering Layer**: Air Tags and Jinja integration handle HTML generation
+3. **Response Layer**: Custom response classes manage different content types
+4. **Application Layer**: Air Applications and Routers provide the high-level interface
+
+### Developer Experience First
+
+Air prioritizes making web development more intuitive and productive by reducing boilerplate code and providing powerful abstractions. Rather than reinventing the wheel, Air builds upon proven technologies, allowing developers to leverage the full power of FastAPI while adding web-specific capabilities.
+
+### Seamless Integration
+
+Instead of forcing developers into a single paradigm, Air supports multiple approaches:
+- Air Tags for Python-based HTML generation
+- Jinja templates for traditional templating
+- HTMX for dynamic interactions without JavaScript
+
+### Flexibility Without Compromise
+
+Air's design allows developers to choose the right tool for each task while maintaining consistency across their codebase. Teams can mix and match approaches as needed while benefiting from Air's unified interface.
+
 ## Key Features of Air
 
 ### 1. Air Tags - Python-Based HTML Generation
@@ -53,12 +77,19 @@ This approach offers several advantages:
 - Full IDE support with autocomplete and type checking
 - Reduced context switching between HTML and Python
 - Better integration with Python tooling and linting
+- Type-safe HTML generation with compile-time error checking
+
+The Air Tags system is built on the [BaseTag](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/tags/models/base.py#L44-L366) class, which provides:
+- Automatic attribute handling (converting Python kwargs to HTML attributes)
+- Recursive child rendering with proper text escaping
+- Serialization to dictionaries and JSON for storage/transmission
+- Pretty printing and browser preview capabilities
 
 ### 2. Seamless Jinja Integration
 
 While Air Tags are powerful, Air also provides excellent support for Jinja templates for developers who prefer traditional templating:
 
-``python
+```python
 import air
 
 app = air.Air()
@@ -69,13 +100,13 @@ def index(request: air.Request):
     return jinja(request, name="home.html", title="Welcome to Air")
 ```
 
-Even better, you can mix both approaches in the same project, using Jinja for overall page structure and Air Tags for dynamic fragments.
+Even better, you can mix both approaches in the same project, using Jinja for overall page structure and Air Tags for dynamic fragments. The [JinjaRenderer](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/templating.py#L35-L100) class automatically converts Air Tags to strings when they're included in Jinja contexts.
 
 ### 3. HTMX-First Approach
 
 Air is designed with HTMX in mind, making it easy to create dynamic, modern web applications without writing JavaScript:
 
-```
+```python
 @app.page
 def index():
     return air.layouts.mvpcss(
@@ -93,6 +124,8 @@ def index():
     )
 ```
 
+Air provides utilities like [is_htmx_request](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/dependencies.py#L46-L47) to detect HTMX requests and adjust responses accordingly. This enables sophisticated patterns like partial page updates and seamless navigation.
+
 ### 4. Pydantic-Powered Form Validation
 
 Air leverages Pydantic for robust form validation, making it easy to create secure, validated forms:
@@ -108,6 +141,12 @@ class ContactModel(BaseModel):
 class ContactForm(air.AirForm):
     model = ContactModel
 ```
+
+The [AirForm](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/forms.py#L21-L110) class provides:
+- Automatic validation based on Pydantic field definitions
+- User-friendly error messages generated from validation rules
+- Flexible integration with dependency injection or direct usage in views
+- Type-safe form handling with compile-time checking
 
 ## Installation and Setup
 
@@ -156,35 +195,83 @@ fastapi dev
 
 Visit `http://localhost:8000` to see your first Air application in action!
 
+## Advanced Features
+
+### Server-Sent Events (SSE)
+
+Air includes built-in support for real-time communication through Server-Sent Events:
+
+```python
+import random
+from asyncio import sleep
+import air
+
+app = air.Air()
+
+@app.page
+def index():
+    return air.layouts.mvpcss(
+        air.Script(src="https://unpkg.com/htmx-ext-sse@2.2.1/sse.js"),
+        air.Title("Server Sent Event Demo"),
+        air.H1("Server Sent Event Demo"),
+        air.P("Lottery number generator"),
+        air.Section(
+            hx_ext="sse",
+            sse_connect="/lottery-numbers",
+            hx_swap="beforeend show:bottom",
+            sse_swap="message",
+        ),
+    )
+
+async def lottery_generator():
+    while True:
+        lottery_numbers = ", ".join([str(random.randint(1, 40)) for x in range(6)])
+        # Tags work seamlessly
+        yield air.Aside(lottery_numbers)
+        # As do strings. Non-strings are cast to strings via the str built-in
+        yield "Hello, world"
+        await sleep(1)
+
+@app.get("/lottery-numbers")
+async def get():
+    return air.SSEResponse(lottery_generator())
+```
+
+### Layout System
+
+Air provides pre-built layouts for rapid prototyping:
+
+```python
+@app.page
+async def index(is_htmx: bool = Depends(air.is_htmx_request)):
+    return air.layouts.mvpcss(
+        air.Title("Home"),
+        air.Article(
+            air.H1("Welcome to Air"), 
+            air.P(air.A("Click to go to Dashboard", href="/dashboard")), 
+            hx_boost="true"
+        ),
+        is_htmx=is_htmx
+    )
+```
+
+The [mvpcss](file:///Users/macbookair/Documents/REACT%20BLOG%20APP/AIR%20PROJECTS/AIR%20TUTORIALS/helloair/air/src/air/layouts.py#L27-L93) layout function automatically includes MVP.css for basic styling and HTMX for dynamic interactions.
+
 ## Air vs Flask: A Modern Comparison
 
 For those familiar with Flask, you might wonder how Air compares. While Flask is a mature micro-framework, Air represents a more modern approach.
 
----
-
 When comparing core foundations, Flask is built on Werkzeug and Jinja2, while Air leverages the more modern stack of FastAPI, Starlette, and Pydantic.
-
----
 
 In terms of asynchronous support, Flask has limited capabilities in this area, whereas Air provides first-class async support out of the box.
 
----
-
 Regarding type safety, Flask offers minimal type checking, while Air provides comprehensive type safety through its Pydantic integration.
-
----
 
 For API development, Flask requires additional extensions to be effective, but Air has API capabilities built right into its foundation.
 
----
-
 When it comes to HTML generation, Flask relies solely on templates, but Air offers both traditional templates and its innovative Python-based HTML generation system.
 
----
-
 Finally, implementing modern web patterns like HTMX requires manual work in Flask, while Air has built-in support for these contemporary approaches.
-
----
 
 Overall, Air is designed for developers who want to leverage modern Python features while maintaining the simplicity that makes Flask popular.
 
